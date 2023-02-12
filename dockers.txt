@@ -1,0 +1,23 @@
+docker pull quay.io/biocontainers/fastp:0.20.1--h8b12597_0
+
+docker pull quay.io/biocontainers/iqtree:2.1.4_beta--hdcc8f71_0
+
+docker pull staphb/mlst:2.23.0
+
+docker pull quay.io/biocontainers/fastqc:0.11.9--0
+
+docker pull staphb/prokka:1.14.6
+
+docker pull finlaymaguire/rgi:latest
+
+docker pull quay.io/biocontainers/roary:3.13.0--pl526h516909a_0
+
+docker pull staphb/snippy:4.6.0-SC2
+
+docker pull bactopia/tools-ismapper:1.7.1
+
+docker pull gfanz/mosdepth:0.2.3-44daaa62
+
+docker pull staphb/kraken2:2.1.2-no-db
+
+docker pull quay.io/biocontainers/multiqc:1.11--pyhdfd78af_0
