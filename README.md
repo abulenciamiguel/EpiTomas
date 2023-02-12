@@ -5,10 +5,10 @@ It uses docker images for reproducibility and built using Nextflow.
 
 ### Pipeline Summary
 **Read processing**:
-1. Pre-trimming Quality Assessment ([`FastQC`](https://github.com/s-andrews/FastQC))
-2. Read Trimming ([`fastp`](https://github.com/OpenGene/fastp))
-3. Post-trimming Quality Assessment ([`FastQC`](https://github.com/s-andrews/FastQC))
-4. Contaminant Assessment ([`kraken2`](https://github.com/DerrickWood/kraken2))
+1. Pre-trimming quality assessment ([`FastQC`](https://github.com/s-andrews/FastQC))
+2. Read trimming ([`fastp`](https://github.com/OpenGene/fastp))
+3. Post-trimming quality assessment ([`FastQC`](https://github.com/s-andrews/FastQC))
+4. Contaminant assessment ([`kraken2`](https://github.com/DerrickWood/kraken2))
 
 **Assembly**:
 1. Reference-based alignment ([`snippy`](https://github.com/tseemann/snippy))
