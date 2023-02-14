@@ -1,0 +1,10 @@
+sample,fastq_1,fastq_2
+Sample1,/home/ufuoma/fastq/ERR1946974_1.fastq.gz,/home/ufuoma/fastq/ERR1946974_2.fastq.gz
+Sample2,/home/ufuoma/fastq/ERR1947024_1.fastq.gz,/home/ufuoma/fastq/ERR1947024_2.fastq.gz
+Sample3,/home/ufuoma/fastq/ERR1947055_1.fastq.gz,/home/ufuoma/fastq/ERR1947055_2.fastq.gz
+Sample4,/home/ufuoma/fastq/ERR1947045_1.fastq.gz,/home/ufuoma/fastq/ERR1947045_2.fastq.gz
+Sample5,/home/ufuoma/fastq/ERR1947047_1.fastq.gz,/home/ufuoma/fastq/ERR1947047_2.fastq.gz
+Sample6,/home/ufuoma/fastq/ERR1947048_1.fastq.gz,/home/ufuoma/fastq/ERR1947048_2.fastq.gz
+Sample7,/home/ufuoma/fastq/ERR1947049_1.fastq.gz,/home/ufuoma/fastq/ERR1947049_2.fastq.gz
+Sample8,/home/ufuoma/fastq/ERR1947054_1.fastq.gz,/home/ufuoma/fastq/ERR1947054_2.fastq.gz
+Sample9,/home/ufuoma/fastq/ERR1947056_1.fastq.gz,/home/ufuoma/fastq/ERR1947056_2.fastq.gz
