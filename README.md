@@ -44,7 +44,7 @@ It uses docker images for reproducibility and built using Nextflow.
 	can be installed following the instructions [here](https://docs.docker.com/engine/install/ubuntu/)
 
 - Sample sheet </br>
-  `csv` format
+  `csv` format </br>
   see an example [here](https://github.com/ufuomababatunde/EpiTomas/tree/main/assets)
   
 - Reference genome </br>
@@ -77,16 +77,19 @@ It uses docker images for reproducibility and built using Nextflow.
   ```
 
 ### Sample one-liner command
-``` nextflow run EpiTomas --sample_sheet samplesheet.csv --ref_genome ~/00_refGenome/CP010781_1_A_baumannii.fasta --mlst_scheme abaumannii --ref_gbk ~/00_refGenome/CP010781_1_A_baumannii.gb --IS_fasta ~/00_refGenome/insertSeq/ISABa_combined.fasta --kraken_db ~/k2_standard_08gb_20221209 --out_dir results_epitomas ```
+```
+nextflow run EpiTomas --sample_sheet samplesheet.csv --ref_genome ~/00_refGenome/CP010781_1_A_baumannii.fasta --mlst_scheme abaumannii --ref_gbk ~/00_refGenome/CP010781_1_A_baumannii.gb --IS_fasta ~/00_refGenome/insertSeq/ISABa_combined.fasta --kraken_db ~/k2_standard_08gb_20221209 --out_dir results_epitomas
+```
 
 ### Another version of the same command
-``` nextflow run EpiTomas \
+```
+nextflow run EpiTomas \
 --sample_sheet samplesheet.csv \
 --ref_genome ~/00_refGenome/CP010781_1_A_baumannii.fasta \
 --mlst_scheme abaumannii \
 --ref_gbk ~/00_refGenome/CP010781_1_A_baumannii.gb \
 --IS_fasta ~/00_refGenome/insertSeq/ISABa_combined.fasta \
 --kraken_db ~/k2_standard_08gb_20221209 \
---out_dir results_epitomas ```
-
+--out_dir results_epitomas
+```
 
