@@ -10,12 +10,14 @@ process preTrimQC {
 	overwrite: 'true'
 	)
 
+	errorStrategy 'ignore'
 
 	input:
 	tuple val(sample), path(fastq_1), path(fastq_2)
 
 	output:
 	path "*.{html,zip}", emit: preQC_out
+	tuple val(sample), path(fastq_1), path(fastq_2), emit:noCorruptedfq_out
 
 	script:
 	"""

@@ -21,7 +21,7 @@ workflow READQC {
 
 	main:
 		preTrimQC(ch_sample)
-		fastP(ch_sample)
+		fastP(preTrimQC.out.noCorruptedfq_out)
 		postTrimQC(fastP.out.fastP_out)
 		kraken(fastP.out.fastP_out, params.kraken_db)
 
