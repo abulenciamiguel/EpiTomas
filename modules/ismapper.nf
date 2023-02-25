@@ -6,7 +6,8 @@ process ismapper {
 
 	tag "working on $sample"
 
-
+	errorStrategy 'ignore'
+	
 	publishDir (
 	path: "${params.out_dir}",
 	mode: "copy",
