@@ -33,7 +33,7 @@ It uses docker images for reproducibility and built using Nextflow.
   can be installed following the instructions [here](https://www.atlassian.com/git/tutorials/install-git) </br>
   
 - Clone this git repository </br>
-  `git clone https://github.com/ufuomababatunde/EpiTomas` </br>
+  `git clone https://github.com/ufuomababatunde/EpiTomas.git` </br>
 
 - Nextflow environment </br>
 	`conda create -n nextflow-env` </br>
