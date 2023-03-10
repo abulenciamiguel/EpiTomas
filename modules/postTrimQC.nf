@@ -9,7 +9,8 @@ process postTrimQC {
 	overwrite: 'true'
 	)
 
-
+	errorStrategy 'ignore'
+	
 	input:
 	tuple val(sample), path(fastq_1), path(fastq_2)
 
