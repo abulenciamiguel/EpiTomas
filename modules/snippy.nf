@@ -1,4 +1,5 @@
 process snippy {
+	cpus 8
 	container 'staphb/snippy:4.6.0-SC2'
 
 
@@ -29,7 +30,7 @@ process snippy {
 	"""
 	mkdir -p 04_snippy
 
-	snippy --cpus 4 \
+	snippy --cpus 8 \
 	--ref $ref_genome \
 	--R1 $fastq_1 \
 	--R2 $fastq_2 \

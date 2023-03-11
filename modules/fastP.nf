@@ -1,4 +1,5 @@
 process fastP {
+	cpus 8
 	container 'quay.io/biocontainers/fastp:0.20.1--h8b12597_0'
 
 	tag "working on $sample"
@@ -20,7 +21,7 @@ process fastP {
 
 	script:
 	"""
-	fastp -i $fastq_1 -I $fastq_2 -o ${sample}.trimmed_R1.fastq.gz -O ${sample}.trimmed_R2.fastq.gz
+	fastp -w 8 -i $fastq_1 -I $fastq_2 -o ${sample}.trimmed_R1.fastq.gz -O ${sample}.trimmed_R2.fastq.gz
 	"""
 
 }

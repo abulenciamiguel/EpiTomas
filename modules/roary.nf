@@ -1,4 +1,5 @@
 process roary {
+	cpus 8
 	container 'quay.io/biocontainers/roary:3.13.0--pl526h516909a_0'
 	
 	tag "aligning"

@@ -1,4 +1,5 @@
 process rgi {
+	cpus 2
 	container 'finlaymaguire/rgi:latest'
 
 	tag "working on $sample"

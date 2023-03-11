@@ -1,4 +1,5 @@
 process kraken {
+	cpus 2
 	container 'staphb/kraken2:2.1.2-no-db'
 
 	tag "check $sample"

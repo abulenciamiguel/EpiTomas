@@ -1,4 +1,5 @@
 process coverageQC {
+	cpus 2
 	container 'nanozoo/mosdepth:0.3.2--892ca95'
 
 	tag "checking $sample"
