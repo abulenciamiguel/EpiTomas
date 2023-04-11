@@ -1,6 +1,6 @@
 process rgi {
 	cpus 2
-	container 'finlaymaguire/rgi:latest'
+	container 'quay.io/biocontainers/rgi:6.0.2--pyha8f3691_0'
 
 	tag "working on $sample"
 
@@ -11,7 +11,7 @@ process rgi {
 	overwrite: "true"
 	)
 
-	errorStrategy 'ignore'
+	//errorStrategy 'ignore'
 
 	input:
 	tuple val(sample), path(consensus_fa)
@@ -25,7 +25,7 @@ process rgi {
 	"""
 	
 
-	wget https://card.mcmaster.ca/latest/data
+	wget --no-check-certificate https://card.mcmaster.ca/latest/data
 	tar -xvf data ./card.json
 
 	rgi clean --local
