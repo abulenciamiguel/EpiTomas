@@ -78,12 +78,7 @@ It uses docker images for reproducibility and built using Nextflow. </br>
     tar xvf k2_standard_08gb_20221209.tar.gz -C k2_standard_08gb_20221209
   ```
 
-### Sample one-liner command
-```
-nextflow run EpiTomas --sample_sheet samplesheet.csv --ref_genome ~/00_refGenome/CP010781_1_A_baumannii.fasta --mlst_scheme abaumannii --ref_gbk ~/00_refGenome/CP010781_1_A_baumannii.gb --IS_fasta ~/00_refGenome/insertSeq/ISABa_combined.fasta --kraken_db ~/k2_standard_08gb_20221209 --out_dir results_epitomas
-```
-
-### Another version of the same command
+### Sample command
 ```
 nextflow run EpiTomas \
 --sample_sheet samplesheet.csv \
@@ -93,5 +88,10 @@ nextflow run EpiTomas \
 --IS_fasta ~/00_refGenome/insertSeq/ISABa_combined.fasta \
 --kraken_db ~/k2_standard_08gb_20221209 \
 --out_dir results_epitomas
+--metatime metadata/metadata_sampleYear_AB.csv \
+--root FM209186 \
+--clockrate 0.0000004 \
+--clocksd 0.0000001
+
 ```
 
