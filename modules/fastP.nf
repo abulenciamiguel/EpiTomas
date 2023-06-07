@@ -21,7 +21,12 @@ process fastP {
 
 	script:
 	"""
-	fastp -w 8 -i $fastq_1 -I $fastq_2 -o ${sample}.trimmed_R1.fastq.gz -O ${sample}.trimmed_R2.fastq.gz
+	fastp -w 8 \
+	-q 30 \
+	-i $fastq_1 \
+	-I $fastq_2 \
+	-o ${sample}.trimmed_R1.fastq.gz \
+	-O ${sample}.trimmed_R2.fastq.gz
 	"""
 
 }
