@@ -15,6 +15,6 @@ workflow PHYLO {
 		prokka(ch_snippy)
 		roary(prokka.out.prokka_out.collect())
 		iqtree(roary.out.roary_out)
-		timetree(iqtree.out.rawtree_out)
+		timetree(iqtree.out.rawtree_out, roary.out.roary_out)
 
 }
