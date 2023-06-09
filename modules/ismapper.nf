@@ -2,7 +2,7 @@ params.ref_gbk = ""
 params.IS_fasta = ""
 
 process ismapper {
-	cpus 4
+	cpus 1
 	container 'bactopia/tools-ismapper:1.7.1'
 
 	tag "working on $sample"
@@ -29,6 +29,6 @@ process ismapper {
 	"""
 	mkdir -p 10_ismapper
 
-	ismap --t 4 --reads $fastq_1 $fastq_2 --queries $params.IS_fasta --reference $params.ref_gbk --output_dir 10_ismapper
+	ismap --t 1 --reads $fastq_1 $fastq_2 --queries $params.IS_fasta --reference $params.ref_gbk --output_dir 10_ismapper
 	"""
 }
