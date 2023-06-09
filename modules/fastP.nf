@@ -1,5 +1,5 @@
 process fastP {
-	cpus 8
+	cpus 1
 	container 'quay.io/biocontainers/fastp:0.20.1--h8b12597_0'
 
 	tag "working on $sample"
