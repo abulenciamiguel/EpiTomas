@@ -1,5 +1,5 @@
 process kraken {
-	cpus 2
+	cpus 1
 	container 'staphb/kraken2:2.1.2-no-db'
 
 	tag "check $sample"
@@ -21,7 +21,7 @@ process kraken {
 
 	script:
 	"""
-	kraken2 --threads 2 \
+	kraken2 --threads 1 \
 	--quick \
 	--memory-mapping \
 	--use-names \
