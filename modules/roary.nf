@@ -1,5 +1,5 @@
 process roary {
-	cpus 8
+	cpus 1
 	container 'quay.io/biocontainers/roary:3.13.0--pl526h516909a_0'
 	
 	tag "aligning"
@@ -19,7 +19,7 @@ process roary {
 	script:
 	"""
 
-	roary -e --mafft -p 8 $prokka_gff -f 07_roary
+	roary -e --mafft -p 1 $prokka_gff -f 07_roary
 	"""
 
 }
