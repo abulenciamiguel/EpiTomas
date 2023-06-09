@@ -18,7 +18,7 @@ process iqtree {
 
 	script:
 	"""
-	iqtree -T 8 -s $roary_aln -m TIM2+I+G -bb 1000
+	iqtree -T 1 -s $roary_aln -m TIM2+I+G -bb 1000
 	"""
 
 }
