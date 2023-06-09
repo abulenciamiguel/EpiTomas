@@ -1,5 +1,5 @@
 process iqtree {
-	cpus 8
+	cpus 1
 	container 'staphb/augur:16.0.3'
 
 	tag "constructing ML tree"
