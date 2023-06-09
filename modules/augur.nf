@@ -22,14 +22,14 @@ process iqtree {
 	--alignment $roary_aln \
 	--method iqtree \
 	--substitution-model GTR \
-	--nthreads 8 \
+	--nthreads 1 \
 	--output tree_raw
 	"""
 }
 
 
 process timetree {
-	cpus 8
+	cpus 1
 	container 'staphb/augur:16.0.3'
 
 	tag "constructing time-resolved tree"
