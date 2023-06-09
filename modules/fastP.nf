@@ -21,7 +21,7 @@ process fastP {
 
 	script:
 	"""
-	fastp -w 8 \
+	fastp -w 1 \
 	-q 30 \
 	-i $fastq_1 \
 	-I $fastq_2 \
