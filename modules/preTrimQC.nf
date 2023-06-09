@@ -1,5 +1,5 @@
 process preTrimQC {
-	cpus 8
+	cpus 1
 	container 'quay.io/biocontainers/fastqc:0.11.9--0'
 
 	tag "working on $sample"
@@ -22,7 +22,7 @@ process preTrimQC {
 
 	script:
 	"""
-	fastqc -t 8 -q $fastq_1 $fastq_2
+	fastqc -t 1 -q $fastq_1 $fastq_2
 	"""
 
 }
