@@ -22,6 +22,7 @@ workflow ASSEMBLY {
 	emit:
 		consensus_out = snippy.out.consensus_only
 		consensus_ID_out = snippy.out.consensus
+		vcf_out = snippy.out.vcf
 		coverageQC_out = coverageQC.out.coverage_dist_out
 
 

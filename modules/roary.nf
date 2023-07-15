@@ -2,7 +2,7 @@ process roary {
 	cpus 1
 	container 'quay.io/biocontainers/roary:3.13.0--pl526h516909a_0'
 	
-	tag "aligning"
+	tag "aligning sequences"
 
 	publishDir (
 	path: "$params.out_dir",
@@ -14,12 +14,12 @@ process roary {
 	file(prokka_gff)
 
 	output:
-	path "07_roary/*.aln", emit: roary_out
+	path "05_roary/*.aln", emit: alignment
 
 	script:
 	"""
 
-	roary -e --mafft -p 1 $prokka_gff -f 07_roary
+	roary -e --mafft -p 1 $prokka_gff -f 05_roary
 	"""
 
 }
