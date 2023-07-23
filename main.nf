@@ -6,7 +6,7 @@ nextflow.enable.dsl=2
 
 // import subworkflows
 include {original} from './workflows/original.nf'
-
+include {krakenQC} from './workflows/krakenQC.nf'
 
 workflow {
 
@@ -17,13 +17,12 @@ workflow {
 		.set{ch_sample}
 
 	main:
-		original(ch_sample)
-		//ASSEMBLY(READQC.out.trimmed_out)
-		//SNPEFF(ASSEMBLY.out.vcf_out)
-		//MLST(ASSEMBLY.out.consensus_out)
-		//PHYLO(ASSEMBLY.out.consensus_ID_out)
-		//RESISTANCE(ASSEMBLY.out.consensus_ID_out)
-		//INSERTION_SEQ(READQC.out.trimmed_out)
-		//MULTIQC(READQC.out.preTrimQC_out, READQC.out.postTrimQC_out, READQC.out.krakenQC_out, ASSEMBLY.out.coverageQC_out)
+		
 
+		if (params.krakenQC) {
+			krakenQC(ch_sample)
+		}
+		else {
+			original(ch_sample)
+		}
 }

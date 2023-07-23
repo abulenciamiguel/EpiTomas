@@ -10,14 +10,13 @@ process kraken {
 	overwrite: "true"
 	)
 
-	errorStrategy 'ignore'
+	//errorStrategy 'ignore'
 	
 	input:
 	tuple val(sample), path(fastq_1), path(fastq_2)
-	path(kraken_db)
 
 	output:
-	tuple val(sample), path("*.txt"), emit: kraken_out
+	tuple val(sample), path("*.txt"), emit: taxon
 
 	script:
 	"""
@@ -29,7 +28,7 @@ process kraken {
 	--paired $fastq_1 $fastq_2 \
 	--classified-out ${sample}_#.classified.fastq \
 	--unclassified-out ${sample}_#.unclassified.fastq \
-	--db $kraken_db \
+	--db $params.krakenDB \
 	--report ${sample}.kraken2.report.txt
 	"""
 }

@@ -22,6 +22,7 @@ include {roary} from '../modules/roary.nf'
 include {iqtree} from '../modules/iqtree.nf'
 include {treetime} from '../modules/treetime.nf'
 include {rgi} from '../modules/rgi.nf'
+include {rgiDB} from '../modules/rgiDB.nf'
 
 
 workflow original {
@@ -38,7 +39,8 @@ workflow original {
 		iqtree(roary.out.alignment)
 		//treetime(iqtree.out.rawtree_out, roary.out.alignment)		
         
-		//rgi(ch_snippy)
+		rgiDB()
+		rgi(snippy.out.consensus, rgi)
 
 		//MLST(ASSEMBLY.out.consensus_out)
 		//RESISTANCE(ASSEMBLY.out.consensus_ID_out)
