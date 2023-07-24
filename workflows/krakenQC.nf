@@ -13,7 +13,7 @@ workflow krakenQC {
 
 	main:
 		fastP(ch_sample)
-		kraken(fastP.out.trimmed)
+		kraken(fastP.out.trimmed, params.krakenDB)
         multiqc(kraken.out.taxon.collect())
 
 }

@@ -14,6 +14,7 @@ process kraken {
 	
 	input:
 	tuple val(sample), path(fastq_1), path(fastq_2)
+	path(krakenDB)
 
 	output:
 	tuple val(sample), path("*.txt"), emit: taxon
@@ -28,7 +29,7 @@ process kraken {
 	--paired $fastq_1 $fastq_2 \
 	--classified-out ${sample}_#.classified.fastq \
 	--unclassified-out ${sample}_#.unclassified.fastq \
-	--db $params.krakenDB \
+	--db $krakenDB \
 	--report ${sample}.kraken2.report.txt
 	"""
 }
