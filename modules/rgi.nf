@@ -15,6 +15,7 @@ process rgi {
 
 	input:
 	tuple val(sample), path(consensus_fa)
+	each file(rgiDB)
 
 	output:
 	path "09_rgi/$sample/*"
@@ -23,10 +24,7 @@ process rgi {
 
 	script:
 	"""
-	
-
-	wget --no-check-certificate https://card.mcmaster.ca/latest/data
-	tar -xvf data ./card.json
+	tar -xvf $rgiDB ./card.json
 
 	rgi clean --local
 

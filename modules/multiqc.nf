@@ -11,17 +11,14 @@ process multiqc {
 
 
 	input:
-	file(preTrim)
-	file(postTrim)
 	file(kraken)
-	file(coverage)
 
 	output:
 	path "*"
 
 	script:
 	"""
-	multiqc $preTrim $postTrim $kraken $coverage
+	multiqc $kraken
 	"""
 
 }

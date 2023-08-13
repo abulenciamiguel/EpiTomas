@@ -2,10 +2,10 @@ process coverageQC {
 	cpus 1
 	container 'nanozoo/mosdepth:0.3.2--892ca95'
 
-	tag "checking $sample"
+	tag "checking coverage of $sample"
 
 	publishDir (
-	path: "${params.out_dir}/04_coverage",
+	path: "${params.out_dir}/03_coverage",
 	mode: "copy",
 	overwrite: "true"
 	)

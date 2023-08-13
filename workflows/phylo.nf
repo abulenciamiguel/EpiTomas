@@ -11,6 +11,8 @@ include {timetree} from '../modules/augur.nf'
 workflow PHYLO {
 	take:
 		ch_snippy
+
+
 	main:
 		prokka(ch_snippy)
 		roary(prokka.out.prokka_out.collect())
