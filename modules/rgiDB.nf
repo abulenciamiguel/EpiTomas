@@ -15,7 +15,7 @@ process rgiDB {
 
 
 	output:
-	path "data", emit: rgiDB
+	path "data", emit: database
 
 
 	script:

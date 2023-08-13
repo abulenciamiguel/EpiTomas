@@ -16,8 +16,8 @@ process coverageQC {
 	tuple val(sample), path(bam), path(bai)
 
 	output:
-	path "*.dist.txt", emit: coverage_dist_out
-	tuple val(sample), path("*.txt"), emit: coverage_summary_out
+	path "*.dist.txt", emit: distribution
+	tuple val(sample), path("*.txt"), emit: summary
 
 	script:
 	"""

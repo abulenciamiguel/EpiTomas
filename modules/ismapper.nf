@@ -29,6 +29,10 @@ process ismapper {
 	"""
 	mkdir -p 10_ismapper
 
-	ismap --t 1 --reads $fastq_1 $fastq_2 --queries $params.IS_fasta --reference $params.ref_gbk --output_dir 10_ismapper
+	ismap --t 1 \
+	--reads $fastq_1 $fastq_2 \
+	--queries $params.IS_fasta \
+	--reference $params.ref_gbk \
+	--output_dir 10_ismapper
 	"""
 }

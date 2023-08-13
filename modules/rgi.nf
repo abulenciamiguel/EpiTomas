@@ -25,11 +25,8 @@ process rgi {
 	script:
 	"""
 	tar -xvf $rgiDB ./card.json
-
 	rgi clean --local
-
 	rgi load --card_json ./card.json --local
-
 	mkdir -p 09_rgi/$sample
 
 	rgi main --input_sequence $consensus_fa \
@@ -37,7 +34,6 @@ process rgi {
 	--include_loose
 
 	rgi heatmap --input 09_rgi/$sample/ --output 09_rgi/$sample/$sample
-
 	"""
 }
 
