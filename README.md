@@ -5,12 +5,10 @@ It uses docker images for reproducibility and built using Nextflow. </br>
 
 [![DOI](https://zenodo.org/badge/600620783.svg)](https://zenodo.org/badge/latestdoi/600620783)
 
-## Pipeline Summary
+## Main Pipeline Summary
 **Read processing**:
-1. Pre-trimming quality assessment ([`FastQC`](https://github.com/s-andrews/FastQC))
-2. Read trimming ([`fastp`](https://github.com/OpenGene/fastp))
-3. Post-trimming quality assessment ([`FastQC`](https://github.com/s-andrews/FastQC))
-4. Contaminant assessment ([`kraken2`](https://github.com/DerrickWood/kraken2))
+1. Read trimming ([`fastp`](https://github.com/OpenGene/fastp))
+
 
 **Assembly**:
 1. Reference-based alignment ([`snippy`](https://github.com/tseemann/snippy))
@@ -20,11 +18,13 @@ It uses docker images for reproducibility and built using Nextflow. </br>
 1. Genome annotation ([`prokka`](https://github.com/tseemann/prokka))
 2. Multiple sequence alignment ([`Roary`](https://github.com/sanger-pathogens/Roary))
 3. Maximum likelihood tree reconstruction ([`iqtree2`](https://github.com/iqtree/iqtree2))
+4. Time-resolved tree ([`treetime`](https://github.com/neherlab/treetime))
 
-**Antimicrobial resistance**
+**Others**
 1. Multi-locus sequence typing ([`mlst`](https://github.com/tseemann/mlst))
 2. Insertion sequences identification ([`ISMapper`](https://github.com/jhawkey/IS_mapper))
 3. AMR gene identification ([`RGI`](https://github.com/arpcard/rgi))
+4. Effect of called variants ([`SnpEff`](https://pcingola.github.io/SnpEff/))
 
 
 ## How to use the pipeline
@@ -78,21 +78,30 @@ It uses docker images for reproducibility and built using Nextflow. </br>
     tar xvf k2_standard_08gb_20221209.tar.gz -C k2_standard_08gb_20221209
   ```
 
+
+### Sample command to run KrakenQC
+```
+nextflow run EpiTomas \
+--sample_sheet samplesheet.csv \
+--krakenQC \
+--krakenDB /path/to/k2_standard_08gb_20221209 \
+--out_dir result_krakenQC
+```
+
+
 ### Sample command
 ```
 nextflow run EpiTomas \
 --sample_sheet samplesheet.csv \
---ref_genome ~/00_refGenome/CP010781_1_A_baumannii.fasta \
+--ref_genome /path/to/refGenome.fasta \
+--ref_gbk /path/to/refGenome.gb \
 --mlst_scheme abaumannii \
---ref_gbk ~/00_refGenome/CP010781_1_A_baumannii.gb \
---IS_fasta ~/00_refGenome/insertSeq/ISABa_combined.fasta \
---kraken_db ~/k2_standard_08gb_20221209 \
+--IS_fasta /path/to/ISABa_combined.fasta \
 --out_dir results_epitomas
---metatime metadata/metadata_sampleYear_AB.csv \
+--metatime /path/to/metadata_sampleYear_AB.csv \
 --root FM209186 \
 --clockrate 0.0000004 \
 --clocksd 0.0000001
-
 ```
 
 ### Citation
