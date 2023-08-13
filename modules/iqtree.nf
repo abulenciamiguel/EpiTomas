@@ -20,7 +20,10 @@ process iqtree {
 	"""
 	cat $roary_aln > aln.aln
 
-	iqtree -T AUTO -s aln.aln -m TIM2+I+G -bb 1000
+	iqtree -T AUTO \
+	-s aln.aln \
+	-m TIM2+I+G \
+	-bb 1000
 	"""
 
 }

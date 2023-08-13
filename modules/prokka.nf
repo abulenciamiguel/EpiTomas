@@ -16,13 +16,19 @@ process prokka {
 	tuple val(sample), path(consensus_fa)
 
 	output:
-	path "04_prokka/*.gff", emit: prokka_out
+	path "04_prokka/*.gff", emit: gff
 
 	script:
 	"""
-	mkdir -p 04_prokka
+	mkdir -p 05_prokka
 
-	prokka --cpus 1 $consensus_fa --outdir 04_prokka --prefix $sample --force
+	prokka \
+	--cpus 1 \
+	$consensus_fa \
+	--prefix $sample \
+	--outdir 05_prokka \
+	--force
+	
 
 	"""
 }

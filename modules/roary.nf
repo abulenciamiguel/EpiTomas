@@ -12,6 +12,7 @@ process roary {
 
 	input:
 	file(prokka_gff)
+	file(prokkaRoot_gff)
 
 	output:
 	path "05_roary/*.aln", emit: alignment
@@ -19,7 +20,11 @@ process roary {
 	script:
 	"""
 
-	roary -e --mafft -p 1 $prokka_gff -f 05_roary
+	roary -e --mafft \
+	-p 1 \
+	$prokka_gff \
+	$prokkaRoot_gff \
+	-f 05_roary
 	"""
 
 }

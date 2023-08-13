@@ -20,6 +20,8 @@ process mlst {
 
 	script:
 	"""
-	mlst --legacy --scheme $params.mlst_scheme $consensus_fa > mlst_result.tsv
+	mlst --legacy \
+	--scheme $params.mlst_scheme \
+	$consensus_fa > mlst_result.tsv
 	"""
 }
