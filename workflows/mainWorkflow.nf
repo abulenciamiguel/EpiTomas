@@ -15,6 +15,10 @@ include {treetime} from '../modules/treetime.nf'
 include {rgi} from '../modules/rgi.nf'
 include {rgiDB} from '../modules/rgiDB.nf'
 include {multiqc} from '../modules/multiqcMain.nf'
+include {variantInfo} from '../modules/variantInfo.nf'
+include {variantCombineType} from '../modules/variantCombineType.nf'
+include {variantCombineImpact} from '../modules/variantCombineImpact.nf'
+
 
 workflow master {
 	take:
@@ -24,17 +28,21 @@ workflow master {
 		fastP(ch_sample)
 		snippy(fastP.out.trimmed, params.ref_genome)
 		snpeff(snippy.out.vcf)
-		coverageQC(snippy.out.bam_bai)
+		variantInfo(snpeff.out.snpeff_vcf)
+		variantCombineType(variantInfo.out.variantType_csv.collect())
+		variantCombineImpact(variantInfo.out.variantImpact_csv.collect())
+
+		//coverageQC(snippy.out.bam_bai)
 		//prokka(snippy.out.consensus)
 		//prokkaRoot()
 		//roary(prokka.out.gff.collect(), prokkaRoot.out.gff)
 		//iqtree(roary.out.alignment)
 		//treetime(iqtree.out.rawtree_out, roary.out.alignment)		
         
-		rgiDB()
-		rgi(snippy.out.consensus, rgiDB.out.database)
+		//rgiDB()
+		//rgi(snippy.out.consensus, rgiDB.out.database)
 
-		multiqc(fastP.out.fastP_json.collect(), coverageQC.out.distribution.collect(), snpeff.out.snpeff_csv.collect())
+		//multiqc(fastP.out.fastP_json.collect(), coverageQC.out.distribution.collect(), snpeff.out.snpeff_csv.collect())
 
 
 }
