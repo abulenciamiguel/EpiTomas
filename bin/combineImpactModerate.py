@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+
 import sys
 import pandas as pd
 
@@ -12,8 +13,13 @@ def combine_selected_columns(csv_files):
         # Read the CSV file
         df = pd.read_csv(csv_file)
         
-        # Extract the "MODERATE" and the first column
-        selected_column = df['MODERATE']
+        # Extract the "MODERATE" column if it exists, otherwise create a column of zeroes
+        if 'MODERATE' in df.columns:
+            selected_column = df['MODERATE']
+        else:
+            selected_column = pd.Series([0] * len(df), name='MODERATE')
+        
+        # Extract the first column
         first_column = df.iloc[:, 0]  # Assuming the first column is the index column
         
         # Create a DataFrame with both columns
@@ -36,3 +42,4 @@ if __name__ == "__main__":
     else:
         input_csv_files = sys.argv[1:]
         combine_selected_columns(input_csv_files)
+

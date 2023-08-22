@@ -12,8 +12,13 @@ def combine_selected_columns(csv_files):
         # Read the CSV file
         df = pd.read_csv(csv_file)
         
-        # Extract the "snp" and the first column
-        selected_column = df['snp']
+        # Extract the "snp" column if it exists, otherwise create a column of zeroes
+        if 'snp' in df.columns:
+            selected_column = df['snp']
+        else:
+            selected_column = pd.Series([0] * len(df), name='snp')
+        
+        # Extract the first column
         first_column = df.iloc[:, 0]  # Assuming the first column is the index column
         
         # Create a DataFrame with both columns
@@ -36,3 +41,4 @@ if __name__ == "__main__":
     else:
         input_csv_files = sys.argv[1:]
         combine_selected_columns(input_csv_files)
+
