@@ -29,13 +29,15 @@ process snippy {
 
 	script:
 	"""
-	mkdir -p 02_snippy
-
-	snippy --cpus 1 \
+	snippy \
+	--mincov 50 \
+	--minfrac 0.9 \
+	--basequal 30 \
 	--ref $ref_genome \
 	--R1 $fastq_1 \
 	--R2 $fastq_2 \
-	--force --prefix $sample \
+	--force \
+	--prefix $sample \
 	--outdir 02_snippy
 
 	bash rename_header.sh $sample
