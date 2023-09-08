@@ -44,7 +44,7 @@ workflow master {
         
 		rgiDB()
 		rgi(snippy.out.consensus, rgiDB.out.database)
-		rgiSummary(rgi.out.json.collect())
+		rgiSummary(rgi.out.json.collect(), rgiDB.out.database)
 
 		mlst(snippy.out.consensus.collect())
 
