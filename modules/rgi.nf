@@ -20,7 +20,7 @@ process rgi {
 	output:
 	//path "09_rgi/$sample/*"
 	//path "09_rgi/$sample/*.json", emit: rgi_out
-	tuple val(sample), path("*.json"), emit: rgi_json
+	tuple val(sample), path("*.json"), emit: json
 
 	script:
 	"""
@@ -32,8 +32,6 @@ process rgi {
 	rgi main --input_sequence $consensus_fa \
 	--output_file 09_rgi/$sample/$sample --local --clean \
 	--include_loose
-
-	#rgi heatmap --input 09_rgi/$sample/ --output 09_rgi/$sample/$sample
 	"""
 }
 

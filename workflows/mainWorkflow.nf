@@ -12,12 +12,13 @@ include {prokkaRoot} from '../modules/prokkaRoot.nf'
 include {roary} from '../modules/roary.nf'
 include {iqtree} from '../modules/iqtree.nf'
 include {treetime} from '../modules/treetime.nf'
-include {rgi} from '../modules/rgi.nf'
 include {rgiDB} from '../modules/rgiDB.nf'
+include {rgiSummary} from '../modules/rgiSummary.nf'
 include {multiqc} from '../modules/multiqcMain.nf'
 include {variantInfo} from '../modules/variantInfo.nf'
 include {variantCombineType} from '../modules/variantCombineType.nf'
 include {variantCombineImpact} from '../modules/variantCombineImpact.nf'
+include {mlst} from '../modules/mlst.nf'
 
 
 workflow master {
@@ -42,6 +43,9 @@ workflow master {
         
 		rgiDB()
 		rgi(snippy.out.consensus, rgiDB.out.database)
+		rgiSummary(rgi.out.json.collect())
+		
+		mlst(snippy.out.consensus.collect())
 
 		//multiqc(coverageQC.out.distribution.collect(), snpeff.out.snpeff_csv.collect())
 
