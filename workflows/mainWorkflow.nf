@@ -39,12 +39,12 @@ workflow master {
 		//roary(prokka.out.gff.collect(), prokkaRoot.out.gff)
 		roary(prokka.out.gff.collect())
 		iqtree(roary.out.alignment)
-		treetime(iqtree.out.rawtree_out, roary.out.alignment)		
+		//treetime(iqtree.out.rawtree_out, roary.out.alignment)		
         
 		rgiDB()
 		rgi(snippy.out.consensus, rgiDB.out.database)
 		rgiSummary(rgi.out.json.collect())
-		
+
 		mlst(snippy.out.consensus.collect())
 
 		//multiqc(coverageQC.out.distribution.collect(), snpeff.out.snpeff_csv.collect())
