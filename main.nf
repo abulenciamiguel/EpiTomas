@@ -11,9 +11,8 @@ include {krakenQC} from './workflows/krakenQC.nf'
 workflow {
 
 	Channel
-		.fromPath(params.sample_sheet)
-		.splitCsv(header:true)
-		.map{row-> tuple(row.sample, file(row.fastq_1), file(row.fastq_2))}
+		.fromFilePairs(params.reads, flat:true)
+		.ifEmpty{error "Cannot find any reads matching: ${params.reads}"}
 		.set{ch_sample}
 
 	main:

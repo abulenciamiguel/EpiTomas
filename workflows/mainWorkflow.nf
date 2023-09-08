@@ -25,8 +25,8 @@ workflow master {
 		ch_sample
 
 	main:
-		fastP(ch_sample)
-		snippy(fastP.out.trimmed, params.ref_genome)
+		//fastP(ch_sample)
+		snippy(ch_sample, params.ref_genome)
 		snpeff(snippy.out.vcf)
 		variantInfo(snpeff.out.snpeff_vcf)
 		variantCombineType(variantInfo.out.variantType_csv.collect())
@@ -34,15 +34,16 @@ workflow master {
 
 		coverageQC(snippy.out.bam_bai)
 		prokka(snippy.out.consensus)
-		prokkaRoot()
-		roary(prokka.out.gff.collect(), prokkaRoot.out.gff)
+		//prokkaRoot()
+		//roary(prokka.out.gff.collect(), prokkaRoot.out.gff)
+		roary(prokka.out.gff.collect())
 		iqtree(roary.out.alignment)
 		treetime(iqtree.out.rawtree_out, roary.out.alignment)		
         
 		rgiDB()
 		rgi(snippy.out.consensus, rgiDB.out.database)
 
-		multiqc(fastP.out.fastP_json.collect(), coverageQC.out.distribution.collect(), snpeff.out.snpeff_csv.collect())
+		//multiqc(coverageQC.out.distribution.collect(), snpeff.out.snpeff_csv.collect())
 
 
 }

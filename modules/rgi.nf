@@ -18,9 +18,9 @@ process rgi {
 	each file(rgiDB)
 
 	output:
-	path "09_rgi/$sample/*"
-	path "09_rgi/$sample/*.json", emit: rgi_out
-
+	//path "09_rgi/$sample/*"
+	//path "09_rgi/$sample/*.json", emit: rgi_out
+	tuple val(sample), path("*.json"), emit: rgi_json
 
 	script:
 	"""
@@ -33,7 +33,7 @@ process rgi {
 	--output_file 09_rgi/$sample/$sample --local --clean \
 	--include_loose
 
-	rgi heatmap --input 09_rgi/$sample/ --output 09_rgi/$sample/$sample
+	#rgi heatmap --input 09_rgi/$sample/ --output 09_rgi/$sample/$sample
 	"""
 }
 
