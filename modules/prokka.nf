@@ -16,7 +16,7 @@ process prokka {
 	tuple val(sample), path(consensus_fa)
 
 	output:
-	path "04_prokka/*.gff", emit: gff
+	path "05_prokka/*.gff", emit: gff
 
 	script:
 	"""
