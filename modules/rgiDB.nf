@@ -5,11 +5,6 @@ process rgiDB {
 	tag "Downloading the latest CARD database"
 
 
-	publishDir (
-	path: "${params.out_dir}",
-	mode: "copy",
-	overwrite: "true"
-	)
 
 	//errorStrategy 'ignore'
 
