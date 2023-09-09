@@ -10,7 +10,7 @@ process prokka {
 	overwrite: "true"
 	)
 
-	errorStrategy 'ignore'
+	//errorStrategy 'ignore'
 	
 	input:
 	tuple val(sample), path(consensus_fa)
