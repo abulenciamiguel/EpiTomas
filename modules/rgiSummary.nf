@@ -14,11 +14,11 @@ process rgiSummary {
 	//errorStrategy 'ignore'
 
 	input:
-	tuple val(sample), path(json)
+	path(json)
 	each file(rgiDB)
 
 	output:
-	tuple val(sample), path("*.csv"), emit: rgi_summary
+	path("*.csv"), emit: rgi_summary
 
 	script:
 	"""

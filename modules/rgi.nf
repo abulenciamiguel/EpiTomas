@@ -20,7 +20,7 @@ process rgi {
 	output:
 	//path "09_rgi/$sample/*"
 	//path "09_rgi/$sample/*.json", emit: rgi_out
-	tuple val(sample), path("*.json"), emit: json
+	path("09_rgi/${sample}/*.json"), emit: json
 
 	script:
 	"""

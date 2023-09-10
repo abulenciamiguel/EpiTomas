@@ -17,6 +17,7 @@ process rgiDB {
 	"""
 	wget --no-check-certificate https://card.mcmaster.ca/latest/data
 
+
 	"""
 }
 
