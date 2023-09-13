@@ -82,7 +82,7 @@ It uses docker images for reproducibility and built using Nextflow. </br>
 ### Sample command to run KrakenQC
 ```
 nextflow run EpiTomas \
---sample_sheet samplesheet.csv \
+--reads RAW_fastq_directory \
 --krakenQC \
 --krakenDB /path/to/k2_standard_08gb_20221209 \
 --out_dir result_krakenQC
@@ -92,16 +92,13 @@ nextflow run EpiTomas \
 ### Sample command
 ```
 nextflow run EpiTomas \
---sample_sheet samplesheet.csv \
+--reads TRIMMED_fastq_directory \
 --ref_genome /path/to/refGenome.fasta \
 --ref_gbk /path/to/refGenome.gb \
 --mlst_scheme abaumannii \
 --IS_fasta /path/to/ISABa_combined.fasta \
 --out_dir results_epitomas
---metatime /path/to/metadata_sampleYear_AB.csv \
---root FM209186 \
---clockrate 0.0000004 \
---clocksd 0.0000001
+--metatime /path/to/metadata_sampleYear_AB.csv
 ```
 
 ### Citation
