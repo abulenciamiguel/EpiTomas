@@ -102,5 +102,5 @@ nextflow run EpiTomas \
 ```
 
 ### Citation
-If you find this pipeline to be useful, please cite: </br>
+If you find this pipeline useful, please cite: </br>
 "Abulencia, M.F.B., Tesalona, S.D., Lagamayo, E.N., Pineda-Cortel, M.R.B., Manahan, E.P. 2023. EpiTomas: antimicrobial resistance phylogenomic pipeline. v1.0.0. https://github.com/abulenciamiguel/EpiTomas. https://zenodo.org/badge/latestdoi/600620783"
