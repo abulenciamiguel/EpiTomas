@@ -1,5 +1,4 @@
 process prokka {
-	cpus 1
 	container 'staphb/prokka:1.14.6'
 
 	tag "annotating $sample"
@@ -23,7 +22,6 @@ process prokka {
 	mkdir -p 05_prokka
 
 	prokka \
-	--cpus 1 \
 	$consensus_fa \
 	--prefix $sample \
 	--outdir 05_prokka \

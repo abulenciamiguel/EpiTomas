@@ -1,5 +1,4 @@
 process variantInfo {
-	cpus 1
 	container 'ufuomababatunde/biopython:v1.2.0'
 
 	tag "working on $sample"

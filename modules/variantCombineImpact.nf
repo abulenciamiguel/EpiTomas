@@ -1,5 +1,4 @@
 process variantCombineImpact {
-	cpus 1
 	container 'ufuomababatunde/biopython:v1.2.0'
 
 	tag "Combining ..."
@@ -23,17 +22,13 @@ process variantCombineImpact {
 
 	script:
 	"""
-	combineImpactHigh.py \
-	$impact
+	combineImpactHigh.py $impact
 
-	combineImpactLow.py \
-	$impact
+	combineImpactLow.py $impact
 
-	combineImpactModerate.py \
-	$impact
+	combineImpactModerate.py $impact
 
-	combineImpactModifier.py \
-	$impact
+	combineImpactModifier.py $impact
 
 	"""
 

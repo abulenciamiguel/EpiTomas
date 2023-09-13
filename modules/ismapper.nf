@@ -1,8 +1,4 @@
-params.ref_gbk = ""
-params.IS_fasta = ""
-
 process ismapper {
-	cpus 1
 	container 'bactopia/tools-ismapper:1.7.1'
 
 	tag "working on $sample"

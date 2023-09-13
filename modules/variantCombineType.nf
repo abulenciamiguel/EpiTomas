@@ -1,5 +1,4 @@
 process variantCombineType {
-	cpus 1
 	container 'ufuomababatunde/biopython:v1.2.0'
 
 	tag "Combining ..."
@@ -23,20 +22,15 @@ process variantCombineType {
 
 	script:
 	"""
-	combineVariantSnp.py \
-	$type
+	combineVariantSnp.py $type
 
-	combineVariantMnp.py \
-	$type
+	combineVariantMnp.py $type
 
-	combineVariantComplex.py \
-	$type
+	combineVariantComplex.py $type
 
-	combineVariantDeletion.py \
-	$type
+	combineVariantDeletion.py $type
 
-	combineVariantInsertion.py \
-	$type
+	combineVariantInsertion.py $type
 
 	"""
 
