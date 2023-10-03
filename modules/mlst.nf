@@ -1,5 +1,3 @@
-params.mlst_scheme = "abaumannii"
-
 process mlst {
 	container 'staphb/mlst:2.23.0'
 

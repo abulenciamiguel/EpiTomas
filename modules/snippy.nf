@@ -1,5 +1,4 @@
 process snippy {
-	cpus 1
 	container 'staphb/snippy:4.6.0-SC2'
 
 
@@ -36,8 +35,7 @@ process snippy {
 	--ref $ref_genome \
 	--R1 $fastq_1 \
 	--R2 $fastq_2 \
-	--force \
-	--prefix $sample \
+	--force --prefix $sample \
 	--outdir 02_snippy
 
 	bash rename_header.sh $sample

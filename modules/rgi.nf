@@ -1,5 +1,4 @@
 process rgi {
-	cpus 1
 	container 'quay.io/biocontainers/rgi:6.0.2--pyha8f3691_0'
 
 	tag "working on $sample"
@@ -18,9 +17,9 @@ process rgi {
 	each file(rgiDB)
 
 	output:
-	path "09_rgi/$sample/*"
-	path "09_rgi/$sample/*.json", emit: rgi_out
-
+	//path "09_rgi/$sample/*"
+	//path "09_rgi/$sample/*.json", emit: rgi_out
+	path("09_rgi/${sample}/*.json"), emit: json
 
 	script:
 	"""
@@ -32,8 +31,6 @@ process rgi {
 	rgi main --input_sequence $consensus_fa \
 	--output_file 09_rgi/$sample/$sample --local --clean \
 	--include_loose
-
-	rgi heatmap --input 09_rgi/$sample/ --output 09_rgi/$sample/$sample
 	"""
 }
 

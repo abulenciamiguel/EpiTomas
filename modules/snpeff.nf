@@ -1,5 +1,4 @@
 process snpeff {
-	cpus 1
 	container 'ufuomababatunde/snpeff:v5.1--1.1'
 	containerOptions = "--user root"
 
