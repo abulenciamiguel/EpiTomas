@@ -28,9 +28,10 @@ process snippy {
 
 	script:
 	"""
-	mkdir -p 02_snippy
-
 	snippy \
+	--mincov 50 \
+	--minfrac 0.9 \
+	--basequal 30 \
 	--ref $ref_genome \
 	--R1 $fastq_1 \
 	--R2 $fastq_2 \

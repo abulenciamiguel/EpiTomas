@@ -4,12 +4,12 @@ process kraken {
 	tag "check $sample"
 
 	publishDir (
-	path: "${params.out_dir}/03_kraken",
+	path: "${params.out_dir}/01_kraken",
 	mode: "copy",
 	overwrite: "true"
 	)
 
-	//errorStrategy 'ignore'
+	errorStrategy 'ignore'
 	
 	input:
 	tuple val(sample), path(fastq_1), path(fastq_2)
