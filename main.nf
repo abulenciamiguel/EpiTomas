@@ -11,22 +11,39 @@ include {mtb} from './workflows/mtb.nf'
 
 workflow {
 
-	Channel
-		.fromFilePairs("${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
-		.ifEmpty{error "Cannot find any reads matching: ${params.reads}"}
-		.set{ch_sample}
+
 
 	main:
-		
-
 		if (params.krakenQC) {
+
+			Channel
+				.fromFilePairs("${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
+				.ifEmpty{error "Cannot find any reads matching: ${params.reads}"}
+				.set{ch_sample}
+
 			krakenQC(ch_sample)
+			// ch_sample.view()
 		}
 		else if (params.mtb) {
+
+			Channel
+				.fromFilePairs("${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
+				{ file -> def matcher = file =~ ~/\/([^\/]+)\.trimmed/ ; matcher[0][1] }
+				.ifEmpty{error "Cannot find any reads matching: ${params.reads}"}
+				.set{ch_sample}
+
 			mtb(ch_sample)
-			//ch_sample.view()
+			// ch_sample.view()
 		}
 		else {
+			Channel
+				.fromFilePairs("${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
+				{ file -> def matcher = file =~ ~/\/([^\/]+)\.trimmed/ ; matcher[0][1] }
+				.ifEmpty{error "Cannot find any reads matching: ${params.reads}"}
+				.set{ch_sample}
+
 			master(ch_sample)
+
+
 		}
 }
