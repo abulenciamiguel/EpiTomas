@@ -7,6 +7,7 @@ nextflow.enable.dsl=2
 // import subworkflows
 include {master} from './workflows/mainWorkflow.nf'
 include {krakenQC} from './workflows/krakenQC.nf'
+include {mtb} from './workflows/mtb.nf'
 
 workflow {
 
@@ -20,6 +21,9 @@ workflow {
 
 		if (params.krakenQC) {
 			krakenQC(ch_sample)
+		}
+		else if (params.mtb) {
+			mtb(ch_sample)
 		}
 		else {
 			master(ch_sample)
