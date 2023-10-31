@@ -5,7 +5,6 @@ nextflow.enable.dsl=2
 // import subworkflows
 include {mtbAlign} from '../modules/mtbAlign.nf'
 include {mtbVariant} from '../modules/mtbVariant.nf'
-include {snpeff} from '../modules/snpeff.nf'
 
 
 workflow mtb {
@@ -14,7 +13,7 @@ workflow mtb {
 
 	main:
 		mtbAlign(ch_sample)
-		mtbVariant(mtbAlign.out.bam_bai)
-		snpeff(mtbVariant.out.vcf)
+		mtbVariant(mtbAlign.out.bam)
+
 
 }

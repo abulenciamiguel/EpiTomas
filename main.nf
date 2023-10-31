@@ -12,7 +12,7 @@ include {mtb} from './workflows/mtb.nf'
 workflow {
 
 	Channel
-		.fromFilePairs("$PWD/${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
+		.fromFilePairs("${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
 		.ifEmpty{error "Cannot find any reads matching: ${params.reads}"}
 		.set{ch_sample}
 
@@ -24,6 +24,7 @@ workflow {
 		}
 		else if (params.mtb) {
 			mtb(ch_sample)
+			//ch_sample.view()
 		}
 		else {
 			master(ch_sample)

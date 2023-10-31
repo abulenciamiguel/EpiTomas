@@ -2,12 +2,12 @@ process mtbVariant {
 	container 'ufuomababatunde/lofreq:v2.1.5'
 
 
-	tag "assembling $sample"
+	tag "variants and consensus: $sample"
 
 
 	publishDir (
 	path: "${params.out_dir}/02_mtbVariant",
-	pattern: "*.norm.filter.vcf"
+	pattern: "*.norm.filter.vcf",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -15,7 +15,7 @@ process mtbVariant {
 
 	publishDir (
 	path: "${params.out_dir}/03_mtbConsensus",
-	pattern: "*.consensus.fasta"
+	pattern: "*.consensus.fasta",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -23,19 +23,29 @@ process mtbVariant {
 	//errorStrategy 'ignore'
 	
 	input:
-	tuple val(sample), path(bam), path(bam_bai)
+	//tuple val(sample), path(bam), path(bam_bai)
+	tuple val(sample), path(bam)
 
 	output:
+	tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai")
 	tuple val(sample), path("*.norm.filter.vcf"), emit: vcf
-	tuple val(sample), path("*consensus.fasta"), mit: consensus
+	tuple val(sample), path("*consensus.fasta"), emit: consensus
 
 
 	script:
 	"""
+	samtools sort \
+	$bam \
+	-o ${sample}.sorted.bam
+
+
+	samtools index ${sample}.sorted.bam
+
+
 	lofreq indelqual --dindel \
 	-f $params.mtbRef \
 	-o ${sample}.indelqual.bam \
-	$bam
+	${sample}.sorted.bam
 
 	
 	samtools index ${sample}.indelqual.bam
@@ -56,6 +66,7 @@ process mtbVariant {
 	${sample}.vcf.gz > ${sample}.pass.vcf
 
 
+	bgzip -c ${sample}.pass.vcf > ${sample}.pass.vcf.gz
 	tabix -p vcf ${sample}.pass.vcf.gz
 
 
@@ -80,12 +91,10 @@ process mtbVariant {
 	${sample}.norm.filter.bcf
 
 
-	bcftools consensus \
-	-s - \
-	--fasta-ref $params.mtbRef \
-	${sample}.norm.filter.bcf \
-	--iupac-codes \
-	--output ${sample}.consensus.fasta
+	bgzip -c ${sample}.norm.filter.vcf > ${sample}.norm.filter.vcf.gz
+	tabix -p vcf ${sample}.norm.filter.vcf.gz
+
+	cat $params.mtbRef | bcftools consensus --iupac-codes ${sample}.norm.filter.vcf.gz > ${sample}.consensus.fasta
 	"""
 
 

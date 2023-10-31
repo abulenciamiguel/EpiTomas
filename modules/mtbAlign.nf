@@ -1,5 +1,5 @@
 process mtbAlign {
-	container 'staphb/samtools:1.18'
+	container 'ufuomababatunde/bwa-samtools:v0.7.17-v0.1.19'
 
 
 	tag "assembling $sample"
@@ -17,23 +17,21 @@ process mtbAlign {
 	tuple val(sample), path(fastq_1), path(fastq_2)
 
 	output:
-	tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai"), emit: bam_bai
-
+	// tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai"), emit: bam_bai
+	tuple val(sample), path("*.bam"), emit: bam
 
 	script:
 	"""
+	bwa index $params.mtbRef
+
 	bwa mem \
 	$params.mtbRef \
-	$fastq_1 $fastq_2 | \
-	samtools view -bS > ${sample}.bam
+	$fastq_1 $fastq_2 > ${sample}.sam
 
 
-	samtools sort \
-	${sample}.bam \
-	-o ${sample}.sorted.bam
+	samtools view -bS ${sample}.sam > ${sample}.bam
 
 
-	samtools index ${sample}.sorted.bam
 	"""
 
 
