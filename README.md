@@ -89,7 +89,7 @@ nextflow run EpiTomas \
 ```
 
 
-### Sample command
+### Sample command for any bacteria
 ```
 nextflow run EpiTomas \
 --reads TRIMMED_fastq_directory \
@@ -99,6 +99,13 @@ nextflow run EpiTomas \
 --IS_fasta /path/to/ISABa_combined.fasta \
 --out_dir results_epitomas
 --metatime /path/to/metadata_sampleYear_AB.csv
+```
+
+### Sample command specifically for *Mycobacterium tuberculosis* assembly
+```
+nextflow run EpiTomas \
+--reads TRIMMED_fastq_directory \
+--out_dir results_epitomas
 ```
 
 ### Citation
