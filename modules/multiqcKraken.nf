@@ -1,4 +1,4 @@
-process multiqc {
+process multiqcKraken {
 	container 'quay.io/biocontainers/multiqc:1.11--pyhdfd78af_0'
 
 	tag "collecting"
