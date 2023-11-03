@@ -1,12 +1,12 @@
 process mtbAlign {
-	container 'ufuomababatunde/bwa-samtools:v0.7.17-v0.1.19'
+	container 'ufuomababatunde/bwa-samtools:0.7.17-1.18'
 
 
 	tag "assembling $sample"
 
 
 	publishDir (
-	path: "${params.out_dir}/01_mtbAlignment",
+	path: "${params.out_dir}/01_alignment",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -17,8 +17,8 @@ process mtbAlign {
 	tuple val(sample), path(fastq_1), path(fastq_2)
 
 	output:
-	// tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai"), emit: bam_bai
-	tuple val(sample), path("*.bam"), emit: bam
+	tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai"), emit: bam_bai
+
 
 	script:
 	"""
@@ -26,12 +26,13 @@ process mtbAlign {
 
 	bwa mem \
 	$params.mtbRef \
-	$fastq_1 $fastq_2 > ${sample}.sam
+	$fastq_1 $fastq_2 | \
+	samtools view -bS - | \
+	samtools sort - \
+	-o ${sample}.sorted.bam
 
 
-	samtools view -bS ${sample}.sam > ${sample}.bam
-
-
+	samtools index ${sample}.sorted.bam
 	"""
 
 

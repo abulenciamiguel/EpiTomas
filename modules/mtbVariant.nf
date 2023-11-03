@@ -6,7 +6,7 @@ process mtbVariant {
 
 
 	publishDir (
-	path: "${params.out_dir}/02_mtbVariant",
+	path: "${params.out_dir}/02_variant",
 	pattern: "*.norm.filter.vcf",
 	mode: 'copy',
 	overwrite: 'true'
@@ -14,7 +14,7 @@ process mtbVariant {
 
 
 	publishDir (
-	path: "${params.out_dir}/03_mtbConsensus",
+	path: "${params.out_dir}/02_consensus",
 	pattern: "*.consensus.fasta",
 	mode: 'copy',
 	overwrite: 'true'
@@ -22,30 +22,22 @@ process mtbVariant {
 
 	//errorStrategy 'ignore'
 	
+
 	input:
-	//tuple val(sample), path(bam), path(bam_bai)
-	tuple val(sample), path(bam)
+	tuple val(sample), path(bam), path(bam_bai)
+
 
 	output:
-	tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai")
 	tuple val(sample), path("*.norm.filter.vcf"), emit: vcf
 	tuple val(sample), path("*consensus.fasta"), emit: consensus
 
 
 	script:
 	"""
-	samtools sort \
-	$bam \
-	-o ${sample}.sorted.bam
-
-
-	samtools index ${sample}.sorted.bam
-
-
 	lofreq indelqual --dindel \
 	-f $params.mtbRef \
 	-o ${sample}.indelqual.bam \
-	${sample}.sorted.bam
+	$bam
 
 	
 	samtools index ${sample}.indelqual.bam
