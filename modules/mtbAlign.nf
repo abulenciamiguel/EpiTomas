@@ -24,15 +24,7 @@ process mtbAlign {
 	"""
 	bwa index $params.mtbRef
 
-	bwa mem \
-	$params.mtbRef \
-	$fastq_1 $fastq_2 | \
-	samtools view -bS - | \
-	samtools sort - \
-	-o ${sample}.sorted.bam
 
-
-	samtools index ${sample}.sorted.bam
 	"""
 
 
