@@ -1,4 +1,4 @@
-process fastp {
+process fastP {
 	container 'quay.io/biocontainers/fastp:0.20.1--h8b12597_0'
 
 	tag "trimming $sample"
