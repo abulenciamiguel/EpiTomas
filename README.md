@@ -104,6 +104,7 @@ nextflow run EpiTomas \
 ### Sample command specifically for *Mycobacterium tuberculosis* assembly
 ```
 nextflow run EpiTomas \
+--mtb \
 --reads TRIMMED_fastq_directory \
 --out_dir results_epitomas
 ```
