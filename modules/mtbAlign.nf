@@ -17,8 +17,8 @@ process mtbAlign {
 	tuple val(sample), path(fastq_1), path(fastq_2)
 
 	output:
-	tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai"), emit: bam_bai
-
+	// tuple val(sample), path("*.sorted.bam"), path("*.sorted.bam.bai"), emit: bam_bai
+	tuple val(sample), path("*.sam")
 
 	script:
 	"""
@@ -26,13 +26,9 @@ process mtbAlign {
 
 	bwa mem \
 	$params.mtbRef \
-	$fastq_1 $fastq_2 | \
-	samtools view -bS - | \
-	samtools sort - \
-	-o ${sample}.sorted.bam
+	$fastq_1 $fastq_2 > ${sample}.sam
 
 
-	samtools index ${sample}.sorted.bam
 	"""
 
 

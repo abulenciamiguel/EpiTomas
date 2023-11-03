@@ -13,8 +13,8 @@ workflow mtb {
 
 	main:
 		mtbAlign(ch_sample)
-		mtbVariant(mtbAlign.out.bam_bai)
-		coverageQC(mtbAlign.out.bam_bai)
+		// mtbVariant(mtbAlign.out.bam_bai)
+		// coverageQC(mtbAlign.out.bam_bai)
 
 
 }
