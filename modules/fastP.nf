@@ -1,12 +1,12 @@
-process fastP {
+process fastp {
 	container 'quay.io/biocontainers/fastp:0.20.1--h8b12597_0'
 
 	tag "trimming $sample"
 
 	
 	publishDir (
-	path: "${params.out_dir}/01_fastP/",
-	//pattern: "*.{json,html}",
+	path: "${params.out_dir}/01_fastp/",
+	pattern: "*.{json,html}",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -18,8 +18,8 @@ process fastP {
 
 	output:
 	tuple val(sample), path("*1.fastq.gz"), path("*2.fastq.gz"), emit: trimmed
-	tuple val(sample), path("*.json"), emit: fastP_json
-	tuple val(sample), path("*.html"), emit: fastP_html
+	tuple val(sample), path("*.json"), emit: fastp_json
+	tuple val(sample), path("*.html"), emit: fastp_html
 
 
 	script:

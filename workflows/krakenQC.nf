@@ -3,7 +3,7 @@ nextflow.enable.dsl=2
 
 
 // import subworkflows
-include {fastP} from '../modules/fastP.nf'
+include {fastp} from '../modules/fastp.nf'
 include {kraken} from '../modules/kraken.nf'
 include {multiqc} from '../modules/multiqcKraken.nf'
 
@@ -12,7 +12,7 @@ workflow krakenQC {
 		ch_sample
 
 	main:
-		fastP(ch_sample)
+		fastp(ch_sample)
 		kraken(fastP.out.trimmed, params.krakenDB)
 		multiqc(kraken.out.taxon.collect())
 

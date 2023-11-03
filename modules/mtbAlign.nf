@@ -6,7 +6,7 @@ process mtbAlign {
 
 
 	publishDir (
-	path: "${params.out_dir}/01_alignment",
+	path: "${params.out_dir}/02_alignment",
 	mode: 'copy',
 	overwrite: 'true'
 	)

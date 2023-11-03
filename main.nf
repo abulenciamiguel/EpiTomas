@@ -25,7 +25,6 @@ workflow {
 			// ch_sample.view()
 		}
 		else if (params.mtb) {
-
 			Channel
 				.fromFilePairs("${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
 				{ file -> def matcher = file =~ ~/\/([^\/]+)\.trimmed/ ; matcher[0][1] }
