@@ -22,8 +22,7 @@ process mtbAlign {
 
 	script:
 	"""
-	cp $baseDir/assets/H37Rv.fasta .
-	bwa index H37Rv.fasta
+	cp $baseDir/assets/MtbRefGenomeIndex/H37Rv* .
 
 	bwa mem \
 	H37Rv.fasta \
