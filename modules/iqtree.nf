@@ -22,6 +22,7 @@ process iqtree {
 	iqtree -T AUTO \
 	-s aln.aln \
 	-m TIM2+I+G \
+	-alrt 1000 \
 	-bb 1000
 	"""
 
