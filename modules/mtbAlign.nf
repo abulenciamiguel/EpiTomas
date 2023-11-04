@@ -22,10 +22,10 @@ process mtbAlign {
 
 	script:
 	"""
-	bwa index $params.mtbRef
+	cp $baseDir/assets/H37Rv* .
 
 	bwa mem \
-	$params.mtbRef \
+	H37Rv.fasta \
 	$fastq_1 $fastq_2 | \
 	samtools view -bS - | \
 	samtools sort - \
