@@ -6,7 +6,7 @@ process mtbVariant {
 
 
 	publishDir (
-	path: "${params.out_dir}/03_variant",
+	path: "${params.outDir}/03_variant",
 	pattern: "*.norm.filter.vcf",
 	mode: 'copy',
 	overwrite: 'true'
@@ -14,7 +14,7 @@ process mtbVariant {
 
 
 	publishDir (
-	path: "${params.out_dir}/04_consensus",
+	path: "${params.outDir}/04_consensus",
 	pattern: "*.consensus.fasta",
 	mode: 'copy',
 	overwrite: 'true'

@@ -6,7 +6,7 @@ process ismapper {
 	errorStrategy 'ignore'
 	
 	publishDir (
-	path: "${params.out_dir}",
+	path: "${params.outDir}",
 	mode: "copy",
 	overwrite: "true"
 	)
@@ -28,7 +28,7 @@ process ismapper {
 	ismap --t 1 \
 	--reads $fastq_1 $fastq_2 \
 	--queries $params.IS_fasta \
-	--reference $params.ref_gbk \
+	--reference $params.genomeGenbank \
 	--output_dir 10_ismapper
 	"""
 }

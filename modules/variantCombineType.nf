@@ -5,7 +5,7 @@ process variantCombineType {
 
 
 	publishDir (
-	path: "${params.out_dir}/05_variantCombined",
+	path: "${params.outDir}/05_variantCombined",
 	mode: 'copy',
 	overwrite: 'true'
 	)

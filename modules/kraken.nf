@@ -4,7 +4,7 @@ process kraken {
 	tag "check $sample"
 
 	publishDir (
-	path: "${params.out_dir}/01_kraken",
+	path: "${params.outDir}/01_kraken",
 	mode: "copy",
 	overwrite: "true"
 	)

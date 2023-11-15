@@ -4,7 +4,7 @@ process mlst {
 	tag "collecting"
 
 	publishDir (
-	path: "${params.out_dir}/05_mlst",
+	path: "${params.outDir}/05_mlst",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -19,7 +19,7 @@ process mlst {
 	script:
 	"""
 	mlst --legacy \
-	--scheme $params.mlst_scheme \
+	--scheme $params.mlst \
 	$consensus_fa > mlst_result.tsv
 	"""
 }

@@ -77,7 +77,7 @@ nextflow run EpiTomas \
 --reads RAW_fastq_directory \
 --krakenQC \
 --krakenDB /path/to/k2_standard_08gb_20221209 \
---out_dir result_krakenQC
+--outDir result_krakenQC
 ```
 
 
@@ -85,10 +85,10 @@ nextflow run EpiTomas \
 ```
 nextflow run EpiTomas \
 --reads TRIMMED_fastq_directory \
---ref_genome /path/to/refGenome.fasta \
---ref_gbk /path/to/refGenome.gb \
---mlst_scheme abaumannii \
---out_dir results_epitomas
+--genomeFasta /path/to/refGenome.fasta \
+--genomeGenbank /path/to/refGenome.gb \
+--mlst abaumannii \
+--outDir results_epitomas
 ```
 
 ### Sample command specifically for *Mycobacterium tuberculosis* assembly
@@ -96,7 +96,7 @@ nextflow run EpiTomas \
 nextflow run EpiTomas \
 --mtb \
 --reads RAW_fastq_directory \
---out_dir results_epitomas
+--outDir results_epitomas
 ```
 
 ### Citation

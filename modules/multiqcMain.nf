@@ -4,7 +4,7 @@ process multiqc {
 	tag "collecting"
 
 	publishDir (
-	path: "${params.out_dir}/multiQC",
+	path: "${params.outDir}/multiQC",
 	mode: "copy",
 	overwrite: "true"
 	)

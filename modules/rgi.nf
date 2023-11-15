@@ -5,7 +5,7 @@ process rgi {
 
 
 	publishDir (
-	path: "${params.out_dir}",
+	path: "${params.outDir}",
 	mode: "copy",
 	overwrite: "true"
 	)

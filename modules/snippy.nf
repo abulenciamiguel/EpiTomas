@@ -6,7 +6,7 @@ process snippy {
 
 
 	publishDir (
-	path: "${params.out_dir}",
+	path: "${params.outDir}",
 	mode: 'copy',
 	overwrite: 'true'
 	)
@@ -14,7 +14,7 @@ process snippy {
 	
 	input:
 	tuple val(sample), path(fastq_1), path(fastq_2)
-	path(ref_genome)
+	path(genomeFasta)
 
 	output:
 	tuple val(sample), path("02_snippy/*.consensus.fa"), emit: consensus
@@ -31,7 +31,7 @@ process snippy {
 	--mincov 50 \
 	--minfrac 0.9 \
 	--basequal 30 \
-	--ref $ref_genome \
+	--ref $genomeFasta \
 	--R1 $fastq_1 \
 	--R2 $fastq_2 \
 	--force --prefix $sample \

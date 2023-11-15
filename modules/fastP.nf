@@ -5,7 +5,7 @@ process fastP {
 
 	
 	publishDir (
-	path: "${params.out_dir}/01_fastp/",
+	path: "${params.outDir}/01_fastp/",
 	pattern: "*.{json,html}",
 	mode: 'copy',
 	overwrite: 'true'

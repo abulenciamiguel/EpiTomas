@@ -4,7 +4,7 @@ process prokka {
 	tag "annotating $sample"
 
 	publishDir (
-	path: "$params.out_dir",
+	path: "$params.outDir",
 	mode: "copy",
 	overwrite: "true"
 	)

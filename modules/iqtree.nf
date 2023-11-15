@@ -4,7 +4,7 @@ process iqtree {
 	tag "constructing ML tree"
 
 	publishDir (
-	path: "${params.out_dir}/06_iqtree",
+	path: "${params.outDir}/06_iqtree",
 	mode: "copy",
 	overwrite: "true"
 	)

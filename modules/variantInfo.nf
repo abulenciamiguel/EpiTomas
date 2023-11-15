@@ -5,7 +5,7 @@ process variantInfo {
 
 
 	publishDir (
-	path: "${params.out_dir}/05_variantInfo",
+	path: "${params.outDir}/05_variantInfo",
 	mode: 'copy',
 	overwrite: 'true'
 	)

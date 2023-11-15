@@ -4,7 +4,7 @@ process coverageQC {
 	tag "checking coverage of $sample"
 
 	publishDir (
-	path: "${params.out_dir}/03_coverage",
+	path: "${params.outDir}/03_coverage",
 	mode: "copy",
 	overwrite: "true"
 	)

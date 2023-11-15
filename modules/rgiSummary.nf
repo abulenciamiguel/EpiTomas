@@ -5,7 +5,7 @@ process rgiSummary {
 
 
 	publishDir (
-	path: "${params.out_dir}/rgiInfo",
+	path: "${params.outDir}/rgiInfo",
 	mode: "copy",
 	overwrite: "true"
 	)

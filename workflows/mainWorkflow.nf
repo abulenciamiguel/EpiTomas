@@ -24,7 +24,7 @@ workflow master {
 		ch_sample
 
 	main:
-		snippy(ch_sample, params.ref_genome)
+		snippy(ch_sample, params.genomeFasta)
 
 		snpeff(snippy.out.vcf)
 		variantInfo(snpeff.out.snpeff_vcf)

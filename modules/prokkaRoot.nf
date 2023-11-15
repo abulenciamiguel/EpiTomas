@@ -4,7 +4,7 @@ process prokkaRoot {
 	tag "annotating the root"
 
 	publishDir (
-	path: "$params.out_dir",
+	path: "$params.outDir",
 	mode: "copy",
 	overwrite: "true"
 	)
@@ -17,7 +17,7 @@ process prokkaRoot {
 	mkdir -p 05_prokka
 
 	prokka \
-	$params.ref_genome \
+	$params.genomeFasta \
 	--prefix root \
 	--outdir 05_prokka \
 	--force

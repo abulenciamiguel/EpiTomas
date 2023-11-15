@@ -4,7 +4,7 @@ process treetime {
 	tag "constructing time-resolved tree"
 
 	publishDir (
-	path: "${params.out_dir}",
+	path: "${params.outDir}",
 	mode: "copy",
 	overwrite: "true"
 	)
