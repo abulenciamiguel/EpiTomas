@@ -20,8 +20,7 @@ process mtbVariant {
 	overwrite: 'true'
 	)
 
-	//errorStrategy 'ignore'
-	
+
 
 	input:
 	tuple val(sample), path(bam), path(bam_bai)

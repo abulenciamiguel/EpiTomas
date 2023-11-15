@@ -10,7 +10,6 @@ process variantCombineImpact {
 	overwrite: 'true'
 	)
 
-	//errorStrategy 'ignore'
 	
 	input:
 	file(impact)

@@ -5,9 +5,6 @@ process rgiDB {
 
 
 
-	//errorStrategy 'ignore'
-
-
 	output:
 	path "data", emit: database
 

@@ -10,15 +10,12 @@ process rgi {
 	overwrite: "true"
 	)
 
-	//errorStrategy 'ignore'
 
 	input:
 	tuple val(sample), path(consensus_fa)
 	each file(rgiDB)
 
 	output:
-	//path "09_rgi/$sample/*"
-	//path "09_rgi/$sample/*.json", emit: rgi_out
 	path("09_rgi/${sample}/*.json"), emit: json
 
 	script:

@@ -18,13 +18,11 @@ It uses docker images for reproducibility and built using Nextflow. </br>
 1. Genome annotation ([`prokka`](https://github.com/tseemann/prokka))
 2. Multiple sequence alignment ([`Roary`](https://github.com/sanger-pathogens/Roary))
 3. Maximum likelihood tree reconstruction ([`iqtree2`](https://github.com/iqtree/iqtree2))
-4. Time-resolved tree ([`treetime`](https://github.com/neherlab/treetime))
 
 **Others**
 1. Multi-locus sequence typing ([`mlst`](https://github.com/tseemann/mlst))
-2. Insertion sequences identification ([`ISMapper`](https://github.com/jhawkey/IS_mapper))
-3. AMR gene identification ([`RGI`](https://github.com/arpcard/rgi))
-4. Effect of called variants ([`SnpEff`](https://pcingola.github.io/SnpEff/))
+2. AMR gene identification ([`RGI`](https://github.com/arpcard/rgi))
+3. Effect of called variants ([`SnpEff`](https://pcingola.github.io/SnpEff/))
 
 
 ## How to use the pipeline
@@ -61,12 +59,6 @@ It uses docker images for reproducibility and built using Nextflow. </br>
 		`abaumannii` if *Acinetobacter baumannii* </br>
 		`paeruginosa` if *Pseudomonas aeruginosa*
 
-- Insertion sequences </br>
-	`fasta` format </br>
-	can be downloaded in [ISfinder](https://isfinder.biotoul.fr/) </br>
-	may create a single multi-fasta file containing multiple insertion sequences using the following command: </br>
-  `cat IS_example1.fasta IS_example2.fasta IS_example420.fasta > IS_combined.fasta`
-
 - Kraken database </br>
 	can be downloaded [here](https://benlangmead.github.io/aws-indexes/k2) </br>
   Minikraken or standard kraken can be used </br>
@@ -96,16 +88,14 @@ nextflow run EpiTomas \
 --ref_genome /path/to/refGenome.fasta \
 --ref_gbk /path/to/refGenome.gb \
 --mlst_scheme abaumannii \
---IS_fasta /path/to/ISABa_combined.fasta \
 --out_dir results_epitomas
---metatime /path/to/metadata_sampleYear_AB.csv
 ```
 
 ### Sample command specifically for *Mycobacterium tuberculosis* assembly
 ```
 nextflow run EpiTomas \
 --mtb \
---reads TRIMMED_fastq_directory \
+--reads RAW_fastq_directory \
 --out_dir results_epitomas
 ```
 

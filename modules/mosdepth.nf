@@ -9,7 +9,6 @@ process coverageQC {
 	overwrite: "true"
 	)
 
-	errorStrategy 'ignore'
 	
 	input:
 	tuple val(sample), path(bam), path(bai)

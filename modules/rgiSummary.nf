@@ -10,7 +10,6 @@ process rgiSummary {
 	overwrite: "true"
 	)
 
-	//errorStrategy 'ignore'
 
 	input:
 	path(json)

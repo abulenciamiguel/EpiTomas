@@ -10,7 +10,6 @@ process variantCombineType {
 	overwrite: 'true'
 	)
 
-	//errorStrategy 'ignore'
 	
 	input:
 	file(type)

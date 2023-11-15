@@ -11,7 +11,6 @@ process snpeff {
 	overwrite: 'true'
 	)
 
-	//errorStrategy 'ignore'
 	
 	input:
 	tuple val(sample), path(vcf)
