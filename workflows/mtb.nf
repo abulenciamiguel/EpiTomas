@@ -6,6 +6,8 @@ nextflow.enable.dsl=2
 include {fastP} from '../modules/fastP.nf'
 include {mtbAlign} from '../modules/mtbAlign.nf'
 include {mtbVariant} from '../modules/mtbVariant.nf'
+include {mtbSnpeff} from '../modules/mtbSnpeff.nf'
+
 include {coverageQC} from '../modules/mosdepth.nf'
 
 workflow mtb {
@@ -16,6 +18,7 @@ workflow mtb {
 		fastP(ch_sample)
 		mtbAlign(fastP.out.trimmed)
 		mtbVariant(mtbAlign.out.bam_bai)
+		mtbSnpeff(mtbVariant.out.vcf)
 		coverageQC(mtbAlign.out.bam_bai)
 
 

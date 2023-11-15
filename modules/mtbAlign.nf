@@ -5,11 +5,11 @@ process mtbAlign {
 	tag "assembling $sample"
 
 
-	publishDir (
-	path: "${params.outDir}/02_alignment",
-	mode: 'copy',
-	overwrite: 'true'
-	)
+	// publishDir (
+	// path: "${params.outDir}/02_alignment",
+	// mode: 'copy',
+	// overwrite: 'true'
+	// )
 
 	
 	input:
