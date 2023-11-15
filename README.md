@@ -33,7 +33,7 @@ It uses docker images for reproducibility and built using Nextflow. </br>
   can be installed following the instructions [here](https://www.atlassian.com/git/tutorials/install-git) </br>
   
 - Clone this git repository </br>
-  `git clone https://github.com/ufuomababatunde/EpiTomas.git` </br>
+  `git clone https://github.com/abulenciamiguel/EpiTomas` </br>
 
 - Nextflow environment </br>
 	`conda create -n nextflow-env` </br>
@@ -45,7 +45,7 @@ It uses docker images for reproducibility and built using Nextflow. </br>
 
 - Sample sheet </br>
   `csv` format </br>
-  see an example [here](https://github.com/ufuomababatunde/EpiTomas/tree/main/assets)
+  see an example [here](https://github.com/abulenciamiguel/EpiTomas/tree/main/assets)
   
 - Reference genome </br>
 	`fasta`
