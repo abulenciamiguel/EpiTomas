@@ -27,11 +27,13 @@ process mtbSnpeff {
 	"""
 	source activate nf-core-snpeff-5.1
 
+	sed 's/AL123456.3/Chromosome/g' $vcf > ${sample}.renamed.vcf
+
 	snpEff \
 	-v Mycobacterium_tuberculosis_h37rv \
 	-csvStats ${sample}.csv \
 	-s ${sample}.summary.html \
-	$vcf > ${sample}.snpEff.vcf
+	${sample}.renamed.vcf > ${sample}.snpEff.vcf
 
 
 	"""
