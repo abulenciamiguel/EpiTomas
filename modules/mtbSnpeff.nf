@@ -31,7 +31,7 @@ process mtbSnpeff {
 	-v Mycobacterium_tuberculosis_h37rv \
 	-csvStats ${sample}.csv \
 	-s ${sample}.summary.html \
-	${sample}.vcf > ${sample}.snpEff.vcf
+	$vcf > ${sample}.snpEff.vcf
 
 
 	"""
