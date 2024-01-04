@@ -8,6 +8,7 @@ nextflow.enable.dsl=2
 include {master} from './workflows/mainWorkflow.nf'
 include {krakenQC} from './workflows/krakenQC.nf'
 include {mtb} from './workflows/mtb.nf'
+include {ont} from './workflows/ont.nf'
 
 workflow {
 
@@ -32,6 +33,15 @@ workflow {
 
 			mtb(ch_sample)
 			// ch_sample.view()
+		}
+		else if (params.ont) {
+			Channel
+				.fromPath("${params.reads}/*.{fastq,fq}{,.gz},"){ file -> def matcher = file =~ /(\d+)/ ; matcher[0][1] }
+				.ifEmpty{error "Cannot find any reads: ${params.reads}"}
+				.set{ch_sample}
+
+			// ont(ch_sample)
+			ch_sample.view()
 		}
 		else {
 			Channel
