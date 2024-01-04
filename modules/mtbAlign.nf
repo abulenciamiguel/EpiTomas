@@ -1,5 +1,5 @@
 process mtbAlign {
-	container 'ufuomababatunde/bwa:v0.7.17'
+	container 'ufuomababatunde/bwa-samtools:0.7.17-1.18'
 
 
 	tag "assembling $sample"
