@@ -6,7 +6,7 @@ process fastP {
 	
 	publishDir (
 	path: "${params.outDir}/01_fastp/",
-	pattern: "*.{json,html}",
+	pattern: "*.{fastq.gz,json,html}",
 	mode: 'copy',
 	overwrite: 'true'
 	)
