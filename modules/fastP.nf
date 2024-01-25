@@ -11,6 +11,12 @@ process fastP {
 	overwrite: 'true'
 	)
 
+	publishDir (
+	path: "${params.outDir}/01_trimmed/",
+	pattern: "*.fastq.gz",
+	mode: 'copy',
+	overwrite: 'true'
+	)
 	
 	input:
 	tuple val(sample), path(fastq_1), path(fastq_2)
