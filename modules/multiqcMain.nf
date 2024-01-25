@@ -4,14 +4,13 @@ process multiqc {
 	tag "collecting"
 
 	publishDir (
-	path: "${params.outDir}/multiQC",
+	path: "${params.outDir}/multiQC_main",
 	mode: "copy",
 	overwrite: "true"
 	)
 
 
 	input:
-	file(fastP)
 	file(mosdepth)
 	file(snpeff)
 
@@ -20,7 +19,7 @@ process multiqc {
 
 	script:
 	"""
-	multiqc $fastP $mosdepth $snpeff
+	multiqc $mosdepth $snpeff
 	"""
 
 }
