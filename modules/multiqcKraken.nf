@@ -4,7 +4,7 @@ process multiqcKraken {
 	tag "collecting"
 
 	publishDir (
-	path: "${params.outDir}/multiQC",
+	path: "${params.outDir}/03_multiQCKraken",
 	mode: "copy",
 	overwrite: "true"
 	)
