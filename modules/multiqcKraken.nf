@@ -11,14 +11,15 @@ process multiqcKraken {
 
 
 	input:
-	file(result)
+	file(resultFastp)
+	file(resultKraken)
 
 	output:
 	path "*"
 
 	script:
 	"""
-	multiqc $result
+	multiqc $resultFastp $resultKraken
 	"""
 
 }
