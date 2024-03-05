@@ -22,7 +22,7 @@ process fastP {
 	tuple val(sample), path(fastq_1), path(fastq_2)
 
 	output:
-	tuple val(sample), path("*1.fastq.gz"), path("*2.fastq.gz"), emit: trimmed
+	tuple val(sample), path("*.trimmed_1.fastq.gz"), path("*.trimmed_2.fastq.gz"), emit: trimmed
 	tuple val(sample), path("*.json"), emit: fastp_json
 	tuple val(sample), path("*.html"), emit: fastp_html
 
@@ -33,8 +33,8 @@ process fastP {
 	-q $params.phred \
 	-i $fastq_1 \
 	-I $fastq_2 \
-	-o ${sample}_1.fastq.gz \
-	-O ${sample}_2.fastq.gz \
+	-o ${sample}.trimmed_1.fastq.gz \
+	-O ${sample}.trimmed_2.fastq.gz \
 	-j ${sample}.fastp.json \
 	-h ${sample}.fastp.html
 	"""
