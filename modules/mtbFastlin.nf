@@ -25,10 +25,10 @@ process mtbFastlin {
         --dir /tmp \
         --barcodes $baseDir/assets/LineageAssignment/MTBC_barcodes.tsv \
         --output LineageAssignment.txt \
-        --kmer-size $fastlinKmerSize \
-        --min-count $fastlinMinCount \
-        --n-barcodes $fastlinNBarcodes \
-        --max-cov $fastlinMaxCoverage
+        --kmer-size $params.fastlinKmerSize \
+        --min-count $params.fastlinMinCount \
+        --n-barcodes $params.fastlinNBarcodes \
+        --max-cov $params.fastlinMaxCoverage
 
 
 	"""
