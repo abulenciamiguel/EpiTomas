@@ -11,6 +11,7 @@ include {mtbSnpeff} from '../modules/mtbSnpeff.nf'
 include {coverageQC} from '../modules/mosdepth.nf'
 
 include {mtbFastlin} from '../modules/mtbFastlin.nf'
+include {spades} from '../modules/spades.nf'
 
 
 workflow mtb {
@@ -25,6 +26,8 @@ workflow mtb {
 		coverageQC(mtbAlign.out.bam_bai)
 
 		mtbFastlin(fastP.out.trimmed.collect())
+
+		spades(fastP.out.trimmed)
 
 
 }
