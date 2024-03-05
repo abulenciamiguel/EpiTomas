@@ -19,10 +19,10 @@ workflow mtb {
 
 	main:
 		fastP(ch_sample)
-		//mtbAlign(fastP.out.trimmed)
-		//mtbVariant(mtbAlign.out.bam_bai)
-		//mtbSnpeff(mtbVariant.out.vcf)
-		//coverageQC(mtbAlign.out.bam_bai)
+		mtbAlign(fastP.out.trimmed)
+		mtbVariant(mtbAlign.out.bam_bai)
+		mtbSnpeff(mtbVariant.out.vcf)
+		coverageQC(mtbAlign.out.bam_bai)
 
 		mtbFastlin(fastP.out.trimmed.collect())
 

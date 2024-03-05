@@ -21,7 +21,7 @@ process mtbAlign {
 
 	script:
 	"""
-	#export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 	
 	cp $baseDir/assets/MtbRefGenomeIndex/H37Rv* .
 
