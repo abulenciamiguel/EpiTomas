@@ -33,8 +33,8 @@ process fastP {
 	-q $params.phred \
 	-i $fastq_1 \
 	-I $fastq_2 \
-	-o ${sample}.trimmed_R1.fastq.gz \
-	-O ${sample}.trimmed_R2.fastq.gz \
+	-o ${sample}_1.fastq.gz \
+	-O ${sample}_2.fastq.gz \
 	-j ${sample}.fastp.json \
 	-h ${sample}.fastp.html
 	"""
