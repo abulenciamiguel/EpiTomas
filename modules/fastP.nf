@@ -25,8 +25,7 @@ process fastP {
 	tuple val(sample), path("*.trimmed_1.fastq.gz"), path("*.trimmed_2.fastq.gz"), emit: trimmed
 	tuple val(sample), path("*.json"), emit: fastp_json
 	tuple val(sample), path("*.html"), emit: fastp_html
-
-
+	
 	script:
 	"""
 	fastp \

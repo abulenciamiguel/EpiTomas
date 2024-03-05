@@ -21,6 +21,9 @@ process mtbFastlin {
 
 	script:
 	"""
+        cp $fastq_1 /tmp/
+        cp $fastq_2 /tmp/
+
 	fastlin \
         --dir /tmp \
         --barcodes $baseDir/assets/LineageAssignment/MTBC_barcodes.tsv \
@@ -29,7 +32,6 @@ process mtbFastlin {
         --min-count $params.fastlinMinCount \
         --n-barcodes $params.fastlinNBarcodes \
         --max-cov $params.fastlinMaxCoverage
-
 
 	"""
 
