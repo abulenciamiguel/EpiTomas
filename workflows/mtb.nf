@@ -10,6 +10,9 @@ include {mtbSnpeff} from '../modules/mtbSnpeff.nf'
 
 include {coverageQC} from '../modules/mosdepth.nf'
 
+include {mtbFastlin} from '../modules/mtbFastlin.nf'
+
+
 workflow mtb {
 	take:
 		ch_sample
@@ -20,6 +23,8 @@ workflow mtb {
 		mtbVariant(mtbAlign.out.bam_bai)
 		mtbSnpeff(mtbVariant.out.vcf)
 		coverageQC(mtbAlign.out.bam_bai)
+
+		mtbFastlin(fastP.out.trimmed.collect())
 
 
 }
