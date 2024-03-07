@@ -1,6 +1,6 @@
 process mtbFastlin {
 	container 'ufuomababatunde/fastlin:v0.2.3'
-
+	ignore_selector_warnings = true
 	tag "working on $sample"
 
 
