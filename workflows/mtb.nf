@@ -10,6 +10,8 @@ include {mtbSnpeff} from '../modules/mtbSnpeff.nf'
 include {coverageQC} from '../modules/mosdepth.nf'
 include {mtbFastlin} from '../modules/mtbFastlin.nf'
 include {spades} from '../modules/spades.nf'
+include {prokka} from '../modules/prokka.nf'
+
 include {rgiDB} from '../modules/rgiDB.nf'
 include {rgiMtbConsensus} from '../modules/rgi.nf'
 include {rgiMtbContig} from '../modules/rgi.nf'
@@ -29,6 +31,7 @@ workflow mtb {
 		mtbFastlin(fastP.out.trimmed.collect())
 
 		spades(fastP.out.trimmed)
+		prokka(spades.out.scaffolds)
 
 		rgiDB()
 		rgiMtbConsensus(mtbVariant.out.consensus, rgiDB.out.database)
