@@ -12,8 +12,9 @@ process mtbFastlin {
 
 	
 	input:
-	tuple val(sample), path(fastq_1), path(fastq_2)
-
+	path(fastq_1)
+	path(fastq_2)
+	
 	output:
 	path("LineageAssignment.txt"), emit: lineage_assignment
 

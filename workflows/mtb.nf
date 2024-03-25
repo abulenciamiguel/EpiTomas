@@ -28,7 +28,7 @@ workflow mtb {
 		mtbVariant(mtbAlign.out.bam_bai)
 		mtbSnpeff(mtbVariant.out.vcf)
 		coverageQC(mtbAlign.out.bam_bai)
-		mtbFastlin(fastP.out.trimmed.collect())
+		mtbFastlin(fastP.out.fastq_1.collect(), fastP.out.fastq_2.collect())
 
 		spades(fastP.out.trimmed)
 		prokka(spades.out.scaffolds)
