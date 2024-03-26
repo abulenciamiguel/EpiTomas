@@ -22,11 +22,12 @@ process mtbFastlin {
 
 	script:
 	"""
-        cp $fastq_1 /tmp/
-        cp $fastq_2 /tmp/
+	mkdir -p fastlinDir
+        cp $fastq_1 fastlinDir/
+        cp $fastq_2 fastlinDir/
 
 	fastlin \
-        --dir /tmp \
+        --dir fastlinDir/ \
         --barcodes $baseDir/assets/LineageAssignment/MTBC_barcodes.tsv \
         --output LineageAssignment.txt \
         --kmer-size $params.fastlinKmerSize \
