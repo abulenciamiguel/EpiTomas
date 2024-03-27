@@ -24,25 +24,20 @@ process rgiSummary {
 	rgi clean --local
 	rgi load --card_json ./card.json --local
 
-	mkdir collectJSON
-
-	cp $json collectJSON/
-
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category drug_class \
 	--output drugClass
 
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category resistance_mechanism \
 	--output resistanceMechanism
 
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category gene_family \
 	--output geneFamily
-
 	"""
 }
 
@@ -74,25 +69,20 @@ process rgiSummaryMtbConsensus {
 	rgi clean --local
 	rgi load --card_json ./card.json --local
 
-	mkdir collectJSON
-
-	cp $json collectJSON/
-
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category drug_class \
 	--output drugClass
 
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category resistance_mechanism \
 	--output resistanceMechanism
 
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category gene_family \
 	--output geneFamily
-
 	"""
 }
 
@@ -124,25 +114,20 @@ process rgiSummaryMtbContig {
 	rgi clean --local
 	rgi load --card_json ./card.json --local
 
-	mkdir collectJSON
-
-	cp $json collectJSON/
-
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category drug_class \
 	--output drugClass
 
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category resistance_mechanism \
 	--output resistanceMechanism
 
 	rgi heatmap \
-	--input collectJSON/ \
+	--input ./ \
 	--category gene_family \
 	--output geneFamily
-
 	"""
 }
 
