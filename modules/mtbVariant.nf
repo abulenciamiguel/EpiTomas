@@ -54,7 +54,7 @@ process mtbVariant {
 	tabix -p vcf ${sample}.vcf.gz
 
 
-	# Filter called variants with at least 100x depth and 20% frequency
+	# Filter called variants with at least 100x depth and 20% frequency (doi: 10.7554/eLife.61805; 10.1038/s41598-020-64708-8)
 	bcftools view \
 	-i 'DP>=100 & AF>=0.2' \
 	${sample}.vcf.gz > ${sample}.pass.vcf

@@ -4,6 +4,8 @@ process mtbFastlin {
 	tag "working on $sample"
 
 
+	tag "Assigning lineages"
+
 	publishDir (
 	path: "${params.outDir}/02_lineage",
 	mode: 'copy',
