@@ -31,7 +31,7 @@ process fastP {
 	script:
 	"""
 	fastp \
-	--threads $params.thread \
+	--thread $params.thread \
 	--qualified_quality_phred $params.phred \
 	--in1 $fastq_1 \
 	--in2 $fastq_2 \
