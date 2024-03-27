@@ -26,7 +26,9 @@ process rgi {
 	mkdir -p 09_rgi/$sample
 
 	rgi main --input_sequence $consensus_fa \
-	--output_file 09_rgi/$sample/$sample --local --clean \
+	--num_threads $params.thread \
+	--output_file 09_rgi/$sample/$sample \
+	--local --clean \
 	--include_loose
 	"""
 }
@@ -61,7 +63,9 @@ process rgiMtbConsensus {
 	mkdir -p 05_rgiConsensus/$sample
 
 	rgi main --input_sequence $consensus_fa \
-	--output_file 05_rgiConsensus/$sample/$sample --local --clean \
+	--num_threads $params.thread \
+	--output_file 05_rgiConsensus/$sample/$sample \
+	--local --clean \
 	--include_loose
 	"""
 }
@@ -96,7 +100,9 @@ process rgiMtbContig {
 	mkdir -p 05_rgiContig/$sample
 
 	rgi main --input_sequence $contigs_fa \
-	--output_file 05_rgiContig/$sample/$sample --local --clean \
+	--num_threads $params.thread \
+	--output_file 05_rgiContig/$sample/$sample \
+	--local --clean \
 	--include_loose
 	"""
 }

@@ -25,7 +25,8 @@ process ismapper {
 	"""
 	mkdir -p 10_ismapper
 
-	ismap --t 1 \
+	ismap \
+	--t $params.thread \
 	--reads $fastq_1 $fastq_2 \
 	--queries $params.IS_fasta \
 	--reference $params.genomeGenbank \

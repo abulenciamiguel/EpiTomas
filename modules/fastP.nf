@@ -31,13 +31,14 @@ process fastP {
 	script:
 	"""
 	fastp \
-	-q $params.phred \
-	-i $fastq_1 \
-	-I $fastq_2 \
-	-o ${sample}.trimmed_1.fastq.gz \
-	-O ${sample}.trimmed_2.fastq.gz \
-	-j ${sample}.fastp.json \
-	-h ${sample}.fastp.html
+	--threads $params.thread \
+	--qualified_quality_phred $params.phred \
+	--in1 $fastq_1 \
+	--in2 $fastq_2 \
+	--out1 ${sample}.trimmed_1.fastq.gz \
+	--out2 ${sample}.trimmed_2.fastq.gz \
+	--json ${sample}.fastp.json \
+	--html ${sample}.fastp.html
 	"""
 
 }

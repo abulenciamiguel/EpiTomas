@@ -20,7 +20,8 @@ process kraken {
 
 	script:
 	"""
-	kraken2 --threads 1 \
+	kraken2 \
+	--threads $params.thread \
 	--quick \
 	--memory-mapping \
 	--use-names \

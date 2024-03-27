@@ -22,6 +22,7 @@ process prokka {
 
 	prokka \
 	$consensus_fa \
+	--cpus $params.thread \
 	--prefix $sample \
 	--outdir 05_prokka \
 	--force

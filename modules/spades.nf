@@ -21,6 +21,7 @@ process spades {
 	script:
 	"""
 	spades.py \
+	--threads $params.thread \
 	-1 $fastq_1 \
 	-2 $fastq_2 \
         --careful \
