@@ -4,11 +4,11 @@ process rgi {
 	tag "working on $sample"
 
 
-	publishDir (
-	path: "${params.outDir}",
-	mode: "copy",
-	overwrite: "true"
-	)
+	// publishDir (
+	// path: "${params.outDir}",
+	// mode: "copy",
+	// overwrite: "true"
+	// )
 
 
 	input:
@@ -39,11 +39,11 @@ process rgiMtbConsensus {
 	tag "working on $sample"
 
 
-	publishDir (
-	path: "${params.outDir}",
-	mode: "copy",
-	overwrite: "true"
-	)
+	// publishDir (
+	// path: "${params.outDir}",
+	// mode: "copy",
+	// overwrite: "true"
+	// )
 
 
 	input:
@@ -74,11 +74,11 @@ process rgiMtbContig {
 	tag "working on $sample"
 
 
-	publishDir (
-	path: "${params.outDir}",
-	mode: "copy",
-	overwrite: "true"
-	)
+	// publishDir (
+	// path: "${params.outDir}",
+	// mode: "copy",
+	// overwrite: "true"
+	// )
 
 
 	input:
