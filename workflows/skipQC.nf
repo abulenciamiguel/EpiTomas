@@ -3,9 +3,6 @@ nextflow.enable.dsl=2
 
 
 // import modules
-include {fastP} from '../modules/fastP.nf'
-include {kraken} from '../modules/kraken.nf'
-include {multiqcKraken} from '../modules/multiqcKraken.nf'
 include {snippy} from '../modules/snippy.nf'
 include {snpeff} from '../modules/snpeff.nf'
 include {coverageQC} from '../modules/mosdepth.nf'
@@ -22,17 +19,12 @@ include {variantCombineImpact} from '../modules/variantCombineImpact.nf'
 include {mlst} from '../modules/mlst.nf'
 
 
-workflow master {
+workflow skipQC {
 	take:
 		ch_sample
 
 	main:
-
-		fastP(ch_sample)
-		kraken(fastP.out.trimmed, params.krakenDB)
-		multiqcKraken(fastP.out.fastp_json.collect(), kraken.out.taxon.collect())
-
-		snippy(fastP.out.trimmed, params.genomeFasta)
+		snippy(ch_sample, params.genomeFasta)
 
 		snpeff(snippy.out.vcf)
 		variantInfo(snpeff.out.snpeff_vcf)
