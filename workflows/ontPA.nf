@@ -7,6 +7,7 @@ include {ontFastqcTrimmed} from '../modules/eskape/ontFastqc.nf'
 include {ontNanoq} from '../modules/eskape/ontNanoq.nf'
 include {ontFlye} from '../modules/eskape/ontFlye.nf'
 include {ontMinimap2} from '../modules/eskape/ontMinimap2.nf'
+include {ontRacon} from '../modules/eskape/ontRacon.nf'
 
 
 
@@ -60,6 +61,5 @@ workflow ontPA {
         ontFastqcTrimmed(ontNanoq.out.trimmedFastq)
         ontFlye(ontNanoq.out.trimmedFastq)
         ontMinimap2(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq))
-        ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).join(ontMinimap2.out.sam).view()
-        //ontRacon(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).join(ontMinimap2.out.sam))
+        ontRacon(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).join(ontMinimap2.out.sam))
 }
