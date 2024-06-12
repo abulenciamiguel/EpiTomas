@@ -7,21 +7,7 @@ include {ontFastqcTrimmed} from '../modules/eskape/ontFastqc.nf'
 include {ontNanoq} from '../modules/eskape/ontNanoq.nf'
 include {ontFlye} from '../modules/eskape/ontFlye.nf'
 
-// include {concatenate} from './modules/concatenate.nf'
-// include {nanoq} from './modules/nanoq.nf'
-// include {fastqcRaw} from './modules/fastqc.nf'
-// include {fastqcTrimmed} from './modules/fastqc.nf'
-// include {minimapPrelim} from './modules/minimap.nf'
-// include {ivarPrelim} from './modules/ivar.nf'
-// include {sortIndexPrelim} from './modules/sortIndex.nf'
-// include {medakaPrelim} from './modules/medaka.nf'
-// include {minimapFinal} from './modules/minimap.nf'
-// include {ivarFinal} from './modules/ivar.nf'
-// include {sortIndexFinal} from './modules/sortIndex.nf'
-// include {medakaFinal} from './modules/medaka.nf'
 
-// include {sierra} from './modules/sierra.nf'
-// include {report} from './modules/report.nf'
 
 
 workflow ontPA {
@@ -72,5 +58,7 @@ workflow ontPA {
 
         ontFastqcTrimmed(ontNanoq.out.trimmedFastq)
         ontFlye(ontNanoq.out.trimmedFastq)
+        ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).view()
+        //ontMinimap2(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq))
 
 }
