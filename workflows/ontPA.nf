@@ -5,6 +5,7 @@ nextflow.enable.dsl=2
 include {ontFastqcRaw} from '../modules/eskape/ontFastqc.nf'
 include {ontFastqcTrimmed} from '../modules/eskape/ontFastqc.nf'
 include {ontNanoq} from '../modules/eskape/ontNanoq.nf'
+include {ontFlye} from '../modules/eskape/ontFlye.nf'
 
 // include {concatenate} from './modules/concatenate.nf'
 // include {nanoq} from './modules/nanoq.nf'
@@ -62,6 +63,7 @@ workflow ontPA {
 
             ontFastqcRaw(ch_sample)
             ontNanoq(ch_sample)
+            
 
         } else {
             log.error "Please specify a valid folder containing ONT basecalled, barcoded fastq files or the concatenated fastq files e.g. --inputDir ./raw/fastq_pass/ or --inputDir ./fastqConcatenated/"
@@ -69,13 +71,6 @@ workflow ontPA {
         }
 
         ontFastqcTrimmed(ontNanoq.out.trimmedFastq)
-        // minimapPrelim(nanoq.out.trimmedFastq, params.reference)
-        // ivarPrelim(minimapPrelim.out.bam)
-        // sortIndexPrelim(ivarPrelim.out.trimmedBam)
-        // medakaFinal(sortIndexPrelim.out.bamBai)
-
-        // sierra(medakaFinal.out.consensus)
-        // report(sierra.out.json, params.reportPDF)
-
+        ontFlye(ontNanoq.out.trimmedFastq)
 
 }
