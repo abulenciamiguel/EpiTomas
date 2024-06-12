@@ -9,7 +9,7 @@ include {master} from './workflows/mainWorkflow.nf'
 include {krakenQC} from './workflows/krakenQC.nf'
 include {skipQC} from './workflows/skipQC.nf'
 include {mtb} from './workflows/mtb.nf'
-include {ont} from './workflows/ont.nf'
+include {ontPA} from './workflows/ontPA.nf'
 
 workflow {
 
@@ -48,15 +48,9 @@ workflow {
 			// ch_sample.view()
 		}
 
-		// else if (params.ont) {
-		// 	Channel
-		// 		.fromPath("${params.reads}/*.{fastq,fq}{,.gz},"){ file -> def matcher = file =~ /(\d+)/ ; matcher[0][1] }
-		// 		.ifEmpty{error "Cannot find any reads: ${params.reads}"}
-		// 		.set{ch_sample}
-
-		// 	// ont(ch_sample)
-		// 	ch_sample.view()
-		// }
+		else if (params.ontPA) {
+			ontPA()
+		}
 		else {
 			Channel
 				.fromFilePairs("${params.reads}/*{,.trimmed}_{R1,R2,1,2}{,_001}.{fastq,fq}{,.gz}", flat:true)
