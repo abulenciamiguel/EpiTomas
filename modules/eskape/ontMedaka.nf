@@ -24,8 +24,8 @@ process ontMedaka {
             -m $params.ontBasecallModel \
             -i $fastq \
             -d $fasta \
-            -o .
+            -o medaka_dir
 
-        mv consensus.fasta ${sample}.consensus.fasta
+        mv medaka_dir/consensus.fasta ../${sample}.consensus.fasta
         """
 }
