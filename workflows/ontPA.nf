@@ -3,6 +3,7 @@ nextflow.enable.dsl=2
 
 // import modules
 include {ontFastqcRaw} from '../modules/eskape/ontFastqc.nf'
+include {ontFastqcTrimmed} from '../modules/eskape/ontFastqc.nf'
 include {ontNanoq} from '../modules/eskape/ontNanoq.nf'
 
 // include {concatenate} from './modules/concatenate.nf'
@@ -67,7 +68,7 @@ workflow ontPA {
             System.exit(1)
         }
 
-        onFastqcTrimmed(ontNanoq.out.trimmedFastq)
+        ontFastqcTrimmed(ontNanoq.out.trimmedFastq)
         // minimapPrelim(nanoq.out.trimmedFastq, params.reference)
         // ivarPrelim(minimapPrelim.out.bam)
         // sortIndexPrelim(ivarPrelim.out.trimmedBam)
