@@ -1,5 +1,5 @@
 process ontMedaka {
-        container 'nanozoo/medaka:1.11.3--ce388c3'
+        container 'ontresearch/medaka:sha3486abaab0d3b90351617eb8622acf2028edb154'
 
         tag "Creating consensus: ${sample}"
 
