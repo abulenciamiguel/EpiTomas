@@ -26,6 +26,6 @@ process ontMedaka {
             -d $fasta \
             -o medaka_dir
 
-        mv medaka_dir/consensus.fasta ../${sample}.consensus.fasta
+        mv medaka_dir/consensus.fasta ${sample}.consensus.fasta
         """
 }
