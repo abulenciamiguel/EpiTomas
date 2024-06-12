@@ -23,7 +23,7 @@ process ontNanoq {
         tuple val(sample), path(fastq)
 
         output:
-        tuple val(sample), path("*.trimmed.fastq.gz"), emit: trimmedFastq
+        tuple val(sample), path("*.trimmed.fastq"), emit: trimmedFastq
         tuple val(sample), path("*.report.json"), emit: nanoqJSON
 
 
@@ -32,7 +32,7 @@ process ontNanoq {
         nanoq \
             --input $fastq \
             --json --report ${sample}.report.json \
-            --output ${sample}.trimmed.fastq.gz \
+            --output ${sample}.trimmed.fastq \
             --min-len $params.nanoqMinReadLength \
             --max-len $params.nanoqMaxReadLength \
             --min-qual $params.nanoqMinReadQuality \
