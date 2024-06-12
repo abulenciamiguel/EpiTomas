@@ -11,7 +11,7 @@ process ontMinimap2 {
         // )
 
         input:
-        tuple val(sample), path(fastq), path(fasta)
+        tuple val(sample), path(fasta), path(fastq)
 
         output:
         tuple val(sample), path("*sam"), emit: sam
