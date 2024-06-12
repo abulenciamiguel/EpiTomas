@@ -19,7 +19,7 @@ nextflow.enable.dsl=2
 // include {report} from './modules/report.nf'
 
 
-workflow {
+workflow ontPA {
 
     // Set channel for the fastq directories
     barcodeDirs = file("${params.reads}/barcode*", type: 'dir', maxdepth: 1 )
