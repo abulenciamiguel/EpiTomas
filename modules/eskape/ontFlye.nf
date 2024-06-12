@@ -14,7 +14,7 @@ process ontFlye {
         tuple val(sample), path(fastq)
 
         output:
-        tuple val(sample), path("assembly.fasta"), emit: flyeFasta
+        tuple val(sample), path("*.flye.fasta"), emit: flyeFasta
         tuple val(sample), path("assembly_info.txt"), emit: flyeSummary
 
 
@@ -27,5 +27,7 @@ process ontFlye {
             --genome-size $params.genomeSize \
             --threads $params.thread \
             --iterations 3
+        
+        mv assembly.fasta ${sample}.flye.fasta
         """
 }
