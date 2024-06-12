@@ -8,6 +8,7 @@ include {ontNanoq} from '../modules/eskape/ontNanoq.nf'
 include {ontFlye} from '../modules/eskape/ontFlye.nf'
 include {ontMinimap2} from '../modules/eskape/ontMinimap2.nf'
 include {ontRacon} from '../modules/eskape/ontRacon.nf'
+include {ontMedaka} from '../modules/eskape/ontMedaka.nf'
 
 
 
@@ -62,4 +63,5 @@ workflow ontPA {
         ontFlye(ontNanoq.out.trimmedFastq)
         ontMinimap2(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq))
         ontRacon(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).join(ontMinimap2.out.sam))
+        ontMedaka(ontRacon.out.raconFasta.join(ontNanoq.out.trimmedFastq))
 }
