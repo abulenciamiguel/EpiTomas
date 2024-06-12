@@ -2,6 +2,8 @@
 nextflow.enable.dsl=2
 
 // import modules
+include {ontFastqcRaw} from './modules/eskape/ontFastqc.nf'
+
 // include {concatenate} from './modules/concatenate.nf'
 // include {nanoq} from './modules/nanoq.nf'
 // include {fastqcRaw} from './modules/fastqc.nf'
@@ -57,7 +59,7 @@ workflow ontPA {
                     }
 
             ch_sample.view()
-            // fastqcRaw(ch_sample)
+            ontFastqcRaw(ch_sample)
             // nanoq(ch_sample)
 
         } else {
