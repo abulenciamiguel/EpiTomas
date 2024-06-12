@@ -15,7 +15,7 @@ process ontFlye {
 
         output:
         tuple val(sample), path("*.flye.fasta"), emit: flyeFasta
-        tuple val(sample), path("assembly_info.txt"), emit: flyeSummary
+        tuple val(sample), path("*assembly_info.txt"), emit: flyeSummary
 
 
         script:
@@ -29,5 +29,6 @@ process ontFlye {
             --iterations 3
         
         mv assembly.fasta ${sample}.flye.fasta
+        mv assembly_info.txt ${sample}.assembly_info.txt
         """
 }
