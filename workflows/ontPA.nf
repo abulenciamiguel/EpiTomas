@@ -2,7 +2,7 @@
 nextflow.enable.dsl=2
 
 // import modules
-include {ontFastqcRaw} from './modules/eskape/ontFastqc.nf'
+include {ontFastqcRaw} from '../modules/eskape/ontFastqc.nf'
 
 // include {concatenate} from './modules/concatenate.nf'
 // include {nanoq} from './modules/nanoq.nf'
