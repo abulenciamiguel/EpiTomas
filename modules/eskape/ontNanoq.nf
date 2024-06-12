@@ -12,7 +12,7 @@ process ontNanoq {
         )
 
         publishDir (
-        path: "${params.outputDir}/02_nanoqReport",
+        path: "${params.outDir}/02_nanoqReport",
         pattern: "*.report.json",
         mode: 'copy',
         overwrite: 'true'
