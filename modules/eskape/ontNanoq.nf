@@ -32,7 +32,7 @@ process ontNanoq {
         nanoq \
             --input $fastq \
             --json --report ${sample}.report.json \
-            --output ${sample}.trimmed.fastq \
+            --output ${sample}.trimmed.fastq.gz \
             --min-len $params.nanoqMinReadLength \
             --max-len $params.nanoqMaxReadLength \
             --min-qual $params.nanoqMinReadQuality \
