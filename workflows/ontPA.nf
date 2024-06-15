@@ -10,6 +10,8 @@ include {ontMinimap2} from '../modules/eskape/ontMinimap2.nf'
 include {ontRacon} from '../modules/eskape/ontRacon.nf'
 include {ontMedaka} from '../modules/eskape/ontMedaka.nf'
 
+include {rgiDB} from '../modules/misc/rgi.nf'
+include {rgiMain} from '../modules/misc/rgi.nf'
 
 
 
@@ -64,4 +66,8 @@ workflow ontPA {
         ontMinimap2(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq))
         ontRacon(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).join(ontMinimap2.out.sam))
         ontMedaka(ontRacon.out.raconFasta.join(ontNanoq.out.trimmedFastq))
+
+
+        rgiDB()
+        rgiMain(ontMedaka.out.consensus, rgiDB.out.database)
 }
