@@ -1,5 +1,6 @@
 process rgiDB {
 	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
+	containerOptions = "--user root"
 
 	tag "Downloading the latest CARD database"
 
@@ -15,9 +16,11 @@ process rgiDB {
 
 process rgiMain {
 	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
+	containerOptions = "--user root"
 
 	tag "working on $sample"
 
+	errorStrategy 'ignore'
 
 	publishDir (
 	path: "${params.outDir}/06_rgi",
