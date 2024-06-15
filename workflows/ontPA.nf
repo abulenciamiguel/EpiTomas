@@ -12,6 +12,7 @@ include {ontMedaka} from '../modules/eskape/ontMedaka.nf'
 
 include {rgiDB} from '../modules/misc/rgi.nf'
 include {rgiMain} from '../modules/misc/rgi.nf'
+include {rgiTest} from '../modules/misc/rgi.nf'
 
 
 
