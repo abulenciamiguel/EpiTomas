@@ -23,7 +23,7 @@ process ontNanoq {
         tuple val(sample), path(fastq)
 
         output:
-        tuple val(sample), path("*.trimmed.fastq"), emit: trimmedFastq
+        tuple val(sample), path("*.trimmed.fastq.gz"), emit: trimmedFastq
         tuple val(sample), path("*.report.json"), emit: nanoqJSON
 
 
