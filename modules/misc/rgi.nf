@@ -1,5 +1,5 @@
 process rgiDB {
-	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
+	container 'quay.io/biocontainers/rgi:6.0.2--pyha8f3691_0'
 
 	tag "Downloading the latest CARD database"
 
@@ -14,7 +14,7 @@ process rgiDB {
 
 
 process rgiMain {
-	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
+	container 'quay.io/biocontainers/rgi:6.0.2-pyha8f3691_0'
 
 	tag "working on $sample"
 
@@ -31,7 +31,9 @@ process rgiMain {
 	each file(rgiDB)
 
 	output:
-	path("${sample}"), emit: json
+    tuple val(sample), path("*.txt"), emit: txt
+    tuple val(sample), path("*.json"), emit: json
+
 
 	script:
 	"""
@@ -39,11 +41,10 @@ process rgiMain {
 	rgi clean --local
 	rgi load --card_json ./card.json --local
 
-	mkdir -p $sample
 
 	rgi main --input_sequence $consensus_fa \
 	--num_threads $params.thread \
-	--output_file $sample/$sample \
+	--output_file $sample \
 	--local --clean \
 	--include_loose
 	"""
