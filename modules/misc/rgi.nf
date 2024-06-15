@@ -63,7 +63,11 @@ process rgiTest {
 
 	script:
 	"""
-	env
-    python -c 'import numpy; print(numpy.__version__)'
+    echo "HOSTNAME: $HOSTNAME"
+    echo "NXF_TASK_WORKDIR: $NXF_TASK_WORKDIR"
+    echo "PWD: $PWD"
+    echo "CONDA_PREFIX: $CONDA_PREFIX"
+    echo "PATH: $PATH"
+    python -c 'import numpy; print(numpy.__version__)' || echo "Failed to import numpy"
 	"""
 }
