@@ -1,6 +1,5 @@
 process rgiDB {
 	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
-	containerOptions = "--user root"
 
 	tag "Downloading the latest CARD database"
 
@@ -16,7 +15,6 @@ process rgiDB {
 
 process rgiMain {
 	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
-	containerOptions = "--user root"
 
 	tag "working on $sample"
 
@@ -50,5 +48,22 @@ process rgiMain {
 	--output_file $sample \
 	--local --clean \
 	--include_loose
+	"""
+}
+
+
+process rgiTest {
+	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
+
+	tag "testing"
+
+	//errorStrategy 'ignore'
+
+
+
+	script:
+	"""
+	env
+    python -c 'import numpy; print(numpy.__version__)'
 	"""
 }

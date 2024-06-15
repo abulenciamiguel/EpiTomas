@@ -67,7 +67,7 @@ workflow ontPA {
         ontRacon(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).join(ontMinimap2.out.sam))
         ontMedaka(ontRacon.out.raconFasta.join(ontNanoq.out.trimmedFastq))
 
-
-        rgiDB()
-        rgiMain(ontMedaka.out.consensus, rgiDB.out.database)
+        rgiTest()
+        //rgiDB()
+        //rgiMain(ontMedaka.out.consensus, rgiDB.out.database)
 }
