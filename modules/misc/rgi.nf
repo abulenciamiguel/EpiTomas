@@ -22,8 +22,9 @@ process rgiMain {
 
 	errorStrategy 'ignore'
 
-    withEnv(['PYTHONNOUSERSITE=1'])
-    
+    environment:
+    PYTHONNOUSERSITE = 1
+
 	publishDir (
 	path: "${params.outDir}/06_rgi",
 	mode: "copy",
