@@ -11,7 +11,7 @@ process mlst {
 
 
 	input:
-	file(consensus_fa)
+	file(mlstConsensus)
 
 	output:
 	path "*.tsv"
@@ -20,6 +20,6 @@ process mlst {
 	"""
 	mlst --legacy \
 	--scheme $params.mlst \
-	$consensus_fa > mlst_result.tsv
+	$mlstConsensus > mlst_result.tsv
 	"""
 }

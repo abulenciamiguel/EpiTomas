@@ -76,7 +76,7 @@ workflow ontPA {
 
         // Conditional execution of the `mlst` process
         if (params.mlst) {
-            mlst(ontMedaka.out.consensus.collect())
+            mlst(ontMedaka.out.mlstConsensus.collect())
         }
 
 

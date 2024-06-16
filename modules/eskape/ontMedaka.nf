@@ -15,6 +15,7 @@ process ontMedaka {
 
         output:
         tuple val(sample), path("*.consensus.fasta"), emit: consensus
+        path("*.consensus.fasta"), emit: mlstConsensus
 
 
         script:
