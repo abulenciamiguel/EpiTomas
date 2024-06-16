@@ -1,7 +1,7 @@
 process mlst {
 	container 'staphb/mlst:2.23.0'
 
-	tag "collecting"
+	tag "Identifying sequence type"
 
 	publishDir (
 	path: "${params.outDir}/06_mlst",
