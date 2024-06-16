@@ -9,7 +9,7 @@ include {master} from './workflows/mainWorkflow.nf'
 include {krakenQC} from './workflows/krakenQC.nf'
 include {skipQC} from './workflows/skipQC.nf'
 include {mtb} from './workflows/mtb.nf'
-include {ontPA} from './workflows/ontPA.nf'
+include {ont} from './workflows/ont.nf'
 
 workflow {
 
@@ -48,8 +48,8 @@ workflow {
 			// ch_sample.view()
 		}
 
-		else if (params.ontPA) {
-			ontPA()
+		else if (params.ont) {
+			ont()
 		}
 		else {
 			Channel

@@ -2,6 +2,7 @@
 nextflow.enable.dsl=2
 
 // import modules
+include {ontConcat} from '../modules/eskape/ontConcat.nf'
 include {ontFastqcRaw} from '../modules/eskape/ontFastqc.nf'
 include {ontFastqcTrimmed} from '../modules/eskape/ontFastqc.nf'
 include {ontNanoq} from '../modules/eskape/ontNanoq.nf'
@@ -39,9 +40,9 @@ workflow ontPA {
                     }
             
             ch_sample.view()
-            // concatenate(ch_sample)
-            // fastqcRaw(concatenate.out.concatFastq)
-            // nanoq(concatenate.out.concatFastq)
+            ontConcat(ch_sample)
+            fastqcRaw(ontConcat.out.concatFastq)
+            nanoq(ontConcat.out.concatFastq)
 
 
         } else if (fastqDir) {
