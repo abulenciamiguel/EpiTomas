@@ -1,7 +1,7 @@
 process ontNanoq {
         container 'ufuomababatunde/nanoq:v0.10.0'
 
-        tag "Filtering ${sample}"
+        tag "Filtering & Trimming ${sample}"
 
 
         publishDir (

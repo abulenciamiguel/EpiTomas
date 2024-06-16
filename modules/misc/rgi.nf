@@ -1,7 +1,7 @@
 process rgiDB {
 	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_1'
 
-	tag "Downloading the latest CARD database"
+	tag "Downloading the latest database"
 
 	output:
 	path "data", emit: database
@@ -15,10 +15,8 @@ process rgiDB {
 
 process rgiMain {
 	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_1'
-    environment = [
-            'PATH': '/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
-        ]
-	tag "working on $sample"
+
+	tag "Looking for AMR genes on $sample"
 
 	errorStrategy 'ignore'
 

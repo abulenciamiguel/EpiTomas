@@ -1,7 +1,7 @@
 process ontFastqcRaw {
         container 'staphb/fastqc:0.12.1'
 
-        tag "Check quality of ${sample}"
+        tag "Quality check of raw ${sample}"
 
         publishDir (
         path: "${params.outDir}/01_fastqcRaw",
@@ -26,7 +26,7 @@ process ontFastqcRaw {
 process ontFastqcTrimmed {
         container 'staphb/fastqc:0.12.1'
 
-        tag "Check quality of ${sample}"
+        tag "Quality check of trimmed ${sample}"
 
         publishDir (
         path: "${params.outDir}/02_fastqcTrimmed",
