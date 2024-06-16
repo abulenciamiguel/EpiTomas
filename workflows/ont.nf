@@ -18,7 +18,7 @@ include {mlst} from '../modules/misc/mlst.nf'
 
 
 
-workflow ontPA {
+workflow ont {
 
     // Set channel for the fastq directories
     barcodeDirs = file("${params.reads}/barcode*", type: 'dir', maxdepth: 1 )
