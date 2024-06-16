@@ -13,6 +13,7 @@ include {ontMedaka} from '../modules/eskape/ontMedaka.nf'
 include {rgiDB} from '../modules/misc/rgi.nf'
 include {rgiMain} from '../modules/misc/rgi.nf'
 include {rgiTest} from '../modules/misc/rgi.nf'
+include {mlst} from '../modules/misc/mlst.nf'
 
 
 
@@ -68,7 +69,15 @@ workflow ontPA {
         ontRacon(ontFlye.out.flyeFasta.join(ontNanoq.out.trimmedFastq).join(ontMinimap2.out.sam))
         ontMedaka(ontRacon.out.raconFasta.join(ontNanoq.out.trimmedFastq))
 
-        //rgiTest()
         rgiDB()
         rgiMain(ontMedaka.out.consensus, rgiDB.out.database)
+
+
+
+        // Conditional execution of the `mlst` process
+        if (params.mlst) {
+            mlst(ontMedaka.out.consensus.collect())
+        }
+
+
 }
