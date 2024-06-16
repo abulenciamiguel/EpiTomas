@@ -34,7 +34,7 @@ process rgiMain {
 
 	output:
     tuple val(sample), path("*.txt"), emit: txt
-    tuple val(sample), path("*.json"), emit: json
+    tuple val(sample), path("${sample}.json"), emit: json
 
 
 	script:
