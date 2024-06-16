@@ -1,7 +1,24 @@
-// Workflow for checking the quality of reads before and after trimming
-
 // enable dsl2
 nextflow.enable.dsl=2
+
+
+
+// Define a help message
+def helpMessage = """
+Usage:
+  nextflow run main.nf [options]
+
+Options:
+  --help       Show this help message and exit
+  --mlst STR   Run the MLST process with the specified input (e.g., paeruginosa)
+"""
+
+// Check if help parameter is invoked and display help message
+if (params.help) {
+    println helpMessage
+    exit 0
+}
+
 
 
 // import subworkflows
@@ -12,9 +29,6 @@ include {mtb} from './workflows/mtb.nf'
 include {ont} from './workflows/ont.nf'
 
 workflow {
-
-
-
 	main:
 		if (params.krakenQC) {
 
