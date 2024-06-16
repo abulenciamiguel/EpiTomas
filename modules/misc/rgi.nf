@@ -1,5 +1,5 @@
 process rgiDB {
-	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
+	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_1'
 
 	tag "Downloading the latest CARD database"
 
@@ -14,7 +14,7 @@ process rgiDB {
 
 
 process rgiMain {
-	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_0'
+	container 'quay.io/biocontainers/rgi:6.0.3--pyha8f3691_1'
     environment = [
             'PATH': '/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
         ]
@@ -22,8 +22,6 @@ process rgiMain {
 
 	errorStrategy 'ignore'
 
-    environment:
-    PYTHONNOUSERSITE = 1
 
 	publishDir (
 	path: "${params.outDir}/06_rgi",
