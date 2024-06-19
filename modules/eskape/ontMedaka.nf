@@ -30,3 +30,41 @@ process ontMedaka {
         mv medaka_dir/consensus.fasta ${sample}.consensus.fasta
         """
 }
+
+process ontMedakaHaploidVar {
+        container 'ufuomababatunde/medaka:v1.11.4'
+
+        tag "Calling variants on ${sample}"
+
+
+        publishDir (
+        path: "${params.outDir}/05_variants",
+        mode: 'copy',
+        overwrite: 'true'
+        )
+
+        input:
+        tuple val(sample), path(fastq)
+
+        output:
+        tuple val(sample), path("*.refBasedConsensus.fasta"), emit: consensus
+        tuple val(sample), path("*.annotated.vcf"), emit: variant
+
+
+        script:
+        """
+        medaka_haploid_variant \
+            -i $fastq \
+            -r $params.refGenome \
+            -m $params.ontBasecallModel \
+            -t $params.thread \
+            -o .
+
+        mv medaka.annotated.vcf ${sample}.annotated.vcf
+
+        medaka stitch \
+            consensus_probs.hdf \
+            $params.refGenome \
+            ${sample}.refBasedConsensus.fasta
+        """
+}

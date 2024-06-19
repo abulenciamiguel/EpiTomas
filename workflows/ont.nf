@@ -81,4 +81,8 @@ workflow ont {
         }
 
 
+        // Conditional execution of the reference-based assembly
+        if (params.refGenome) {
+            ontMedakaHaploidVar(ontNanoq.out.trimmedFastq)
+        }
 }
