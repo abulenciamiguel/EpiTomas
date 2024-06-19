@@ -6,12 +6,27 @@ nextflow.enable.dsl=2
 // Define a help message
 def helpMessage = """
 Usage:
-  nextflow run main.nf [options]
+    nextflow run EpiTomas \
+        --ont \
+        --reads rawReads \
+        --genomeSize 6.3m \
+        --outDir resultDirectory \
+        --mlst paeruginosa \
+        --refGenome reference.fasta
 
 Options:
-  --help       Show this help message and exit
-  --mlst STR   Run the MLST process with the specified input (e.g., paeruginosa)
+    --help                  Show this help message and exit
+    --ont                   Run using the ONT workflow
+    --reads                 Directory containing the raw reads
+    --outDir                Directory of the results
+    --genomeSize            Estimated size of the bacterial genome (e.g., 6.3m)
+    --ontBasecallModel      Basecalling model used (default: r941_min_hac_g507)
+    --mlst                  (Optional) Run multi-locus sequence typing. e.g., paeruginosa for Pseudomonas aeruginosa
+                            See https://github.com/tseemann/mlst/blob/master/db/scheme_species_map.tab
+    --refGenome             (Optional) Fasta file of the reference genome. Run reference-based assembly
 """
+
+
 
 // Check if help parameter is invoked and display help message
 if (params.help) {
