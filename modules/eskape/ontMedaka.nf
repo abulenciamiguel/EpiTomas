@@ -38,7 +38,15 @@ process ontMedakaHaploidVar {
 
 
         publishDir (
-        path: "${params.outDir}/05_variants",
+        path: "${params.outDir}/07_variants",
+        pattern: "*.annotated.vcf",
+        mode: 'copy',
+        overwrite: 'true'
+        )
+
+        publishDir (
+        path: "${params.outDir}/07_refBasedAssembly",
+        pattern: "*.refBasedConsensus.fasta",
         mode: 'copy',
         overwrite: 'true'
         )
