@@ -6,13 +6,7 @@ nextflow.enable.dsl=2
 // Define a help message
 def helpMessage = """
 Usage:
-    nextflow run EpiTomas \
-        --ont \
-        --reads rawReads \
-        --genomeSize 6.3m \
-        --outDir resultDirectory \
-        --mlst paeruginosa \
-        --refGenome reference.fasta
+    nextflow run EpiTomas --ont --reads rawReads --genomeSize 6.3m --outDir resultDirectory --mlst paeruginosa --refGenome reference.fasta
 
 Options:
     --help                  Show this help message and exit
