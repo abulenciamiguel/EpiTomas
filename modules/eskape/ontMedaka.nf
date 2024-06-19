@@ -55,7 +55,7 @@ process ontMedakaHaploidVar {
         """
         medaka_haploid_variant \
             -i $fastq \
-            -r $params.refGenome \
+            -r $PWD/${params.refGenome} \
             -m $params.ontBasecallModel \
             -t $params.thread \
             -o .
@@ -64,7 +64,7 @@ process ontMedakaHaploidVar {
 
         medaka stitch \
             consensus_probs.hdf \
-            $params.refGenome \
+            $PWD/${params.refGenome} \
             ${sample}.refBasedConsensus.fasta
         """
 }
