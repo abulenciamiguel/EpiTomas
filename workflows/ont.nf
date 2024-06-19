@@ -16,6 +16,8 @@ include {rgiMain} from '../modules/misc/rgi.nf'
 include {rgiTest} from '../modules/misc/rgi.nf'
 include {mlst} from '../modules/misc/mlst.nf'
 
+include {ontMedakaHaploidVar} from '../modules/eskape/ontMedaka.nf'
+
 
 
 workflow ont {
