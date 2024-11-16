@@ -24,19 +24,22 @@ workflow mtb {
 
 	main:
 		fastP(ch_sample)
-		mtbAlign(fastP.out.trimmed)
-		mtbVariant(mtbAlign.out.bam_bai)
-		mtbSnpeff(mtbVariant.out.vcf)
-		coverageQC(mtbAlign.out.bam_bai)
-		mtbFastlin(fastP.out.fastq_1.collect(), fastP.out.fastq_2.collect())
 
 		spades(fastP.out.trimmed)
-		prokka(spades.out.scaffolds)
+		// prokka(spades.out.scaffolds)
+        
+        // mtbAlign(fastP.out.trimmed)
+		// mtbVariant(mtbAlign.out.bam_bai)
+		// mtbSnpeff(mtbVariant.out.vcf)
+		// coverageQC(mtbAlign.out.bam_bai)
+		// mtbFastlin(fastP.out.fastq_1.collect(), fastP.out.fastq_2.collect())
 
-		rgiDB()
-		rgiMtbConsensus(mtbVariant.out.consensus, rgiDB.out.database)
-		rgiMtbContig(spades.out.scaffolds, rgiDB.out.database)
-		rgiSummaryMtbConsensus(rgiMtbConsensus.out.json.collect(), rgiDB.out.database)
-		rgiSummaryMtbContig(rgiMtbContig.out.json.collect(), rgiDB.out.database)
+
+
+		// rgiDB()
+		// rgiMtbConsensus(mtbVariant.out.consensus, rgiDB.out.database)
+		// rgiMtbContig(spades.out.scaffolds, rgiDB.out.database)
+		// rgiSummaryMtbConsensus(rgiMtbConsensus.out.json.collect(), rgiDB.out.database)
+		// rgiSummaryMtbContig(rgiMtbContig.out.json.collect(), rgiDB.out.database)
 
 }
